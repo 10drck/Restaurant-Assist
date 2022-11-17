@@ -1,7 +1,7 @@
 # inst326_finalproj
 
-kendrick - 10drck
-Enzo Regala - enzoregala
-Sarah Peng - speng10 
-Kelly Le - kellyle11
-Sophia Hrabinski - sophrabin
+1. kendrick - 10drck
+2. Enzo Regala - enzoregala
+3. Sarah Peng - speng10 
+4. Kelly Le - kellyle11
+5. Sophia Hrabinski - sophrabin
