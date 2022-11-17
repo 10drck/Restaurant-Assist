@@ -1,6 +1,14 @@
 import pandas as pd
 import csv
 
+#class Order():
+  
+#class Receipt():
+  
+#class Inventory():
+  
+#class Staff():
+
 def main():
   #funct will call for functs and class
   pass #<-temp
@@ -22,7 +30,6 @@ def write_file(head_lst, data_lst):
 
     writer.writerows(data_lst) # write mutiple rows.
 #can also use dicts 
-
 
 if __name__ == '__main__':
   main()
