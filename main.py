@@ -35,3 +35,10 @@ def write_file(head_lst, data_lst):
 if __name__ == '__main__':
   main()
   #any other functs youd like to run during the call.
+  
+def parse_args(args):
+  """take in command line arguments
+
+  Args:
+      args (string): command line arguments
+  """
