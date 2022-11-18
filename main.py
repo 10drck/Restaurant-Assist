@@ -27,14 +27,65 @@ class Customers():
     pass
   
   def orders(order):
-    """Takes in the customers order and checks if it is available and
-        total cost of their bill
+    """Summary: Takes in the customers order and checks if it is available and
+                total cost of their bill
         
     Args:
         order(lst): the order of the customer
         
     Returns: the cost of their bill and if there are any items not available
     """
+  
+class Restaurant():
+  """Summary: This creates the restaurant class that is the basics of the 
+            restaurant
+            
+  Attributes:
+      Location(str): the location of the restaurant
+      Name(str): the name of the restaurant
+      Inventory(dict): nested dictionaries
+  """
+  def __init__(self, location, name, inventory):
+    """_summary_
+
+    Args:
+        location (str): the location of the restaurant, address
+        name (str): the name of the restaurant
+        inventory (dict): this is an inventory of all of the food items that the
+                        restaurant has in stock
+    """
+    pass
+  
+  def check_availability():
+    pass
+  
+  def profit():
+    pass
+  
+  def peak_hours():
+    pass
+  
+class Staff(Restaurant):
+  """Summary: This creates a staff object that is the subclass of the restaurant
+
+  Args:
+      Restaurant (class): the restaurant class, to inherit all of attributes of
+                        restaurant
+  """
+  def __init__(name, hours):
+    """this takes in the name and hours of the staff member
+
+    Args:
+        name (_type_): _description_
+        hours (_type_): _description_
+    """
+  pass
+  
+  def __add__():
+    pass
+  
+  def tips():
+    pass
   
 def main():
   #funct will call for functs and class
@@ -63,8 +114,11 @@ if __name__ == '__main__':
   #any other functs youd like to run during the call.
   
 def parse_args(args):
-  """take in command line arguments
+  """Parse command line arguments
 
   Args:
       args (string): command line arguments
+      
+  Returns: 
+      args: parsed arguments
   """
