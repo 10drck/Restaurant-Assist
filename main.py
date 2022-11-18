@@ -57,10 +57,23 @@ class Restaurant():
     pass
   
   def check_availability():
+    """Summary: filters the inventory csv against the order list 
+       Args: 
+           inventory (dict): the remaining food in the restaurant 
+           order(dict): the order that was input 
+       Returns: in_stock (boolean): inside an f-string, returns if the item is out of stock 
+     """"
     pass
   
   def profit():
-    pass
+    """Summary: calculates the profit at the end of an ordering day 
+       Args: 
+            Orders_total (int): the combined total money from the orders 
+            Staff_wages (int): the combined total wages of the staff for the day 
+            Passive_costs (int): set cost of the restaurant bills (rent, electric, etc) set arbitrability by us 
+      Side effects: Created the passive costs variable and returns daily_profit 
+      Returns: Daily_profit(int): orders_total - staff_wages - passive_costs as a Pandas CSV 
+"""
   
   def peak_hours():
     pass
