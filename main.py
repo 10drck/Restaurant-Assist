@@ -86,10 +86,6 @@ class Staff(Restaurant):
   
   def tips():
     pass
-  
-def main():
-  #funct will call for functs and class
-  pass #<-temp
 
 
 def write_file(head_lst, data_lst):
@@ -109,9 +105,26 @@ def write_file(head_lst, data_lst):
     writer.writerows(data_lst) # write mutiple rows.
 #can also use dicts 
 
-if __name__ == '__main__':
-  main()
-  #any other functs youd like to run during the call.
+def plot_data(data):
+  """plot the data that is being passed through and showcase a plot that repersents trends of that data
+
+  Args:
+    data (list): list containing the data to plot
+  
+  """
+  #utilize unpacking for data list to set vars
+  pass
+
+
+def main(name, access_code = None):
+  """intialize objects in this code, call for pandas implimentation for data after the day.
+
+  args:
+    name(str): the name of either the customer or the employee operating
+    access_code(int): the access code of the employee
+  """
+  #funct will call for functs and classes
+  pass #<-temp
   
 def parse_args(args):
   """Parse command line arguments
@@ -122,3 +135,7 @@ def parse_args(args):
   Returns: 
       args: parsed arguments
   """
+
+  if __name__ == '__main__':
+    main()
+  #any other functs youd like to run during the call.
