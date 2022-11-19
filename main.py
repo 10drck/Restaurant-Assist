@@ -3,7 +3,7 @@ import csv
 import matplotlib.pyplot as plt
 
 class Customers():
-  """Creates a customer object that can order food
+  """Creates a customer object that can order food. Takes information of customer, what the order is, and time the order is made.
   
   Attributes: 
     name(str): name of the customer
@@ -38,7 +38,7 @@ class Customers():
     Args:
         order(lst): the order of the customer
         
-    Returns: the cost of their bill and if there are any items not available
+    Returns: the total cost of their bill and if there are any items not available
     """
   
 class Restaurant():
