@@ -62,7 +62,7 @@ class Restaurant():
            inventory (dict): the remaining food in the restaurant 
            order(dict): the order that was input 
        Returns: in_stock (boolean): inside an f-string, returns if the item is out of stock 
-     """"
+     """
     pass
   
   def profit():
@@ -135,13 +135,7 @@ def write_file(head_lst, data_lst):
     data_lst (lst): list containing the data
     can also be a dict
   """
-  with open('.csv', 'w', encoding='UTF-8') as f:
-    writer = csv.writer(f)
-
-    writer.writerow(head_lst) # write the header
-
-    writer.writerows(data_lst) # write mutiple rows.
-#can also use dicts 
+  pass
 
 def plot_data(data):
   """plot the data that is being passed through and showcase a plot that repersents trends of that data
@@ -150,7 +144,6 @@ def plot_data(data):
     data (list): list containing the data to plot
   
   """
-  #utilize unpacking for data list to set vars
   pass
 
 
@@ -184,7 +177,8 @@ def parse_args(args):
     json file with the order, tip, person who ordered
     json file with staff members 
     
-  Files being result:
-    Pandas
-    pyplot
+  Files being result/what's shown to operator:
+    csv file will be written to about some of the data that is coming from the customers to view certain trends in different orders to help the resturant to bring in more reccuring customers and get more revenue.
+
+    when presented the option, if the resturant owner would like to view such trends we will be able to present a plot containing some of that data trends found in the csv file parsed using the pandas library.
   """
