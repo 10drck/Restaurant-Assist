@@ -6,29 +6,34 @@ class Customers():
   """Creates a customer object that can order food
   
   Attributes: 
-    Name(str): name of the customer
-    phone number (string): customers phone number
-    payment method (str): how they will pay
+    name(str): name of the customer
+    phone(str): customers phone number
+    payment_type(str): customers payment type
+    order(list): what the customer orders
+    order_num(int): order number for the customer
+    time(int): the time that the customer ordered
+
   """
-  def __init__(self, name, phone, payment, order, order_num, time):
-    """Summary: takes in the name, phone number, payment method, order
+  def __init__(self, name, phone, payment_type, order, order_num, time):
+    """Create and populate the object of customers using name, phone, payment_type,
+    order, order_num, and time that will be passed through when intialized
     
     Args:
         name (str): name of the customer
         phone (str): _description_
         payment (str): how they will pay
         order (list): the customers order default to an empty list []
-        order_num (_type_): the order number 
-        time (_type_): the hour they ordered in 
+        order_num (int): the order number 
+        time (int): the hour they ordered in
     
     Side effects: 
-        assigns the name, phone number, payment method and order
+        Creates Customers attribute
     """
     pass
   
   def orders(order):
-    """Summary: Takes in the customers order and checks if it is available and
-                total cost of their bill
+    """Takes in the customers order and checks if it is available 
+    and calculates the total cost of their bill
         
     Args:
         order(lst): the order of the customer
@@ -37,42 +42,42 @@ class Customers():
     """
   
 class Restaurant():
-  """Summary: This creates the restaurant class that is the basics of the 
-            restaurant
+  """This creates the restaurant class that is the basics of the restaurant
             
   Attributes:
-      Location(str): the location of the restaurant
-      Name(str): the name of the restaurant
-      Inventory(dict): nested dictionaries
+      location(str): the location of the restaurant
+      name(str): the name of the restaurant
+      inventory(dict): nested dictionaries
   """
   def __init__(self, location, name, inventory):
-    """_summary_
+    """Create and populates the object for resurants using the location, name, and inventory of said insitution
 
     Args:
         location (str): the location of the restaurant, address
         name (str): the name of the restaurant
-        inventory (dict): this is an inventory of all of the food items that the
-                        restaurant has in stock
+        inventory (dict): this is an inventory of all of the food items that the 
+        restaurant has in stock
     """
     pass
   
   def check_availability():
-    """Summary: filters the inventory csv against the order list 
+    """Filters the inventory csv against the order list 
        Args: 
-           inventory (dict): the remaining food in the restaurant 
-           order(dict): the order that was input 
-       Returns: in_stock (boolean): inside an f-string, returns if the item is out of stock 
+          inventory (dict): the remaining food in the restaurant 
+          order(dict): the order that was input 
+       Returns: 
+          in_stock (boolean): inside an f-string, returns if the item is out of stock 
      """
     pass
   
   def profit():
-    """Summary: calculates the profit at the end of an ordering day 
+    """Calculates the profit at the end of an ordering day 
        Args: 
             Orders_total (int): the combined total money from the orders 
             Staff_wages (int): the combined total wages of the staff for the day 
             Passive_costs (int): set cost of the restaurant bills (rent, electric, etc) set arbitrability by us 
-      Side effects: Created the passive costs variable and returns daily_profit 
-      Returns: Daily_profit(int): orders_total - staff_wages - passive_costs as a Pandas CSV 
+      Returns: 
+        Daily_profit(int): total profits for the day
     """
     pass
   
@@ -98,8 +103,8 @@ class Staff(Restaurant):
     """this takes in the name and hours of the staff member
 
     Args:
-        name (_type_): _description_
-        hours (_type_): _description_
+        name (str): name of the staffers
+        hours (int): hours worked
     """
   pass
   
@@ -127,8 +132,8 @@ class Staff(Restaurant):
 
 
 def write_file(head_lst, data_lst):
-  """
-  using data found inside program writes to a csv file
+  """Using data from orders done in resturants, with the utilization of the pandas library
+   be able to write to a csv to allow for spread sheet view.
 
   args:
     head_lst (lst): list containing the header names
@@ -138,11 +143,10 @@ def write_file(head_lst, data_lst):
   pass
 
 def plot_data(data):
-  """plot the data that is being passed through and showcase a plot that repersents trends of that data
+  """Using the data that is passed through, plot a cohesive diagram for the owner to indicate trends in their resturant
 
   Args:
     data (list): list containing the data to plot
-  
   """
   pass
 
