@@ -73,9 +73,18 @@ class Restaurant():
             Passive_costs (int): set cost of the restaurant bills (rent, electric, etc) set arbitrability by us 
       Side effects: Created the passive costs variable and returns daily_profit 
       Returns: Daily_profit(int): orders_total - staff_wages - passive_costs as a Pandas CSV 
-"""
+    """
+    pass
   
-  def peak_hours():
+  def peak_hours(time):
+    """Summary: calcuates the time of day that orders are most commonly made
+    
+    Args: 
+        time(int): the hour that the order is made in 
+        
+    Returns:
+      the most orders in the hour
+    """
     pass
   
 class Staff(Restaurant):
@@ -94,10 +103,26 @@ class Staff(Restaurant):
     """
   pass
   
-  def __add__():
+  def __add__(staff, tip):
+    """Summary: this adds tips to the given staff waiter
+    
+    Args: 
+      staff(string): name of the staff 
+      tip(int): the tip they received from an order
+      
+    return: staff member with increase tip amount 
+    """
     pass
   
-  def tips():
+  def tips(orders):
+    """summary: takes in the tips from the order
+    
+    args: 
+        orders(string): the order with the total and tip
+        
+    return:
+        the tip for the staff member
+    """
     pass
 
 
@@ -152,3 +177,14 @@ def parse_args(args):
   if __name__ == '__main__':
     main()
   #any other functs youd like to run during the call.
+
+
+  """
+  Files being imported in:
+    json file with the order, tip, person who ordered
+    json file with staff members 
+    
+  Files being result:
+    Pandas
+    pyplot
+  """
