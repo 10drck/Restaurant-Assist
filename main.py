@@ -184,5 +184,5 @@ def parse_args(args):
   Files being result/what's shown to operator:
     csv file will be written to about some of the data that is coming from the customers to view certain trends in different orders to help the resturant to bring in more reccuring customers and get more revenue.
 
-    when presented the option, if the resturant owner would like to view such trends we will be able to present a plot containing some of that data trends found in the csv file parsed using the pandas library.
+    when presented the option, if the resturant owner would like to view  trends we will be able to present a plot containing some of that data trends found in the particular data through the utilization of the pandas library.
   """
