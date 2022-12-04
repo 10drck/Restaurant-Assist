@@ -140,7 +140,13 @@ def write_file(head_lst, data_lst):
     data_lst (lst): list containing the data
     can also be a dict
   """
-  pass
+  #replace with pandas code
+
+  with open('.csv', 'w', encoding='UTF-8') as f:
+    writer = csv.writer(f)
+    writer.writerow(head_lst) # write the header
+    writer.writerows(data_lst) # write mutiple rows.
+    #can also use dicts 
 
 def plot_data(data):
   """Using the data that is passed through, plot a cohesive diagram for the owner to indicate trends in their resturant
@@ -148,7 +154,9 @@ def plot_data(data):
   Args:
     data (list): list containing the data to plot
   """
-  pass
+  #plt.bar(left, values, tick_label = tick_label, width = .9, color = x) <- bar
+  #could use pie (show margins) or line for other data
+    
 
 
 def main(name, access_code = None):
