@@ -58,7 +58,9 @@ class Restaurant():
         inventory (dict): this is an inventory of all of the food items that the 
         restaurant has in stock
     """
-    pass
+    self.location = location
+    self.name = name
+    self.inventory = inventory
   
   def check_availability():
     """Filters the inventory csv against the order list 
