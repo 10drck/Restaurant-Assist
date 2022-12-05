@@ -183,10 +183,17 @@ def parse_args(args):
   Returns: 
       args: parsed arguments
   """
+  parser = ArgumentParser()
+  parser.add_argument("filepath")
 
-  if __name__ == '__main__':
-    main()
-  #any other functs youd like to run during the call.
+  args = parser.parse_args(argslist)
+  if args.filepath is None:
+    raise ValueError("Missing filepath")
+  return args
+
+if __name__ == '__main__':
+  main()
+#any other functs youd like to run during the call.
 
 
   """
