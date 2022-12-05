@@ -101,14 +101,15 @@ class Staff(Restaurant):
       Restaurant (class): the restaurant class, to inherit all of attributes of
                         restaurant
   """
-  def __init__(name, hours):
+  def __init__(self, waiter_name, hours):
     """this takes in the name and hours of the staff member
 
     Args:
-        name (str): name of the staffers
+        waiter_name (str): name of the staffers
         hours (int): hours worked
     """
-  pass
+    self.waiter_name = waiter_name
+    self.hours = hours
   
   def __add__(staff, tip):
     """Summary: this adds tips to the given staff waiter
