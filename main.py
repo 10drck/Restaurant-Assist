@@ -1,6 +1,7 @@
 import pandas as pd
 import csv
 import matplotlib.pyplot as plt
+from argparse import ArgumentParser
 
 class Customers():
   """Creates a customer object that can order food. Takes information of customer, what the order is, and time the order is made.
@@ -20,7 +21,7 @@ class Customers():
     
     Args:
         name (str): name of the customer
-        phone (str): _description_
+        phone (str): phone number of the customer
         payment (str): how they will pay
         order (list): the customers order default to an empty list []
         order_num (int): the order number 
@@ -29,7 +30,6 @@ class Customers():
     Side effects: 
         Creates Customers attribute
     """
-    pass
   
   def orders(order):
     """Takes in the customers order and checks if it is available 
