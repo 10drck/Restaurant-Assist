@@ -95,45 +95,6 @@ class Restaurant():
       the most orders in the hour
     """
     pass
-  
-class Staff(Restaurant):
-  """Summary: This creates a staff object that is the subclass of the restaurant
-
-  Args:
-      Restaurant (class): the restaurant class, to inherit all of attributes of
-                        restaurant
-  """
-  def __init__(self, waiter_name, hours):
-    """this takes in the name and hours of the staff member
-
-    Args:
-        waiter_name (str): name of the staffers
-        hours (int): hours worked
-    """
-    self.waiter_name = waiter_name
-    self.hours = hours
-  
-  def __add__(staff, tip):
-    """Summary: this adds tips to the given staff waiter
-    
-    Args: 
-      staff(string): name of the staff 
-      tip(int): the tip they received from an order
-      
-    return: staff member with increase tip amount 
-    """
-    pass
-  
-  def tips(orders):
-    """summary: takes in the tips from the order
-    
-    args: 
-        orders(string): the order with the total and tip
-        
-    return:
-        the tip for the staff member
-    """
-    pass
 
 
 def write_file(head_lst, data_lst):
