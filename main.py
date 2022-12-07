@@ -1,6 +1,7 @@
 import pandas as pd
 import csv
 import matplotlib.pyplot as plt
+import datetime
 from argparse import ArgumentParser
 
 class Customers():
@@ -11,11 +12,10 @@ class Customers():
     phone(str): customers phone number
     payment_type(str): customers payment type
     order(list): what the customer orders
-    order_num(int): order number for the customer
     time(int): the time that the customer ordered
 
   """
-  def __init__(self, name, phone, payment_type, order, order_num, time):
+  def __init__(self, name, phone, payment_type, order, time = datetime.now()):
     """Create and populate the object of customers using name, phone, payment_type,
     order, order_num, and time that will be passed through when intialized
     
@@ -30,16 +30,34 @@ class Customers():
     Side effects: 
         Creates Customers attribute
     """
+    self.name = name
+    self.phone = phone
+    self.payment_type = payment_type
+    self.order = order
+    self.order_num = order_num
+    self.time = time 
   
-  def orders(order):
+  def order_total(order):
     """Takes in the customers order and checks if it is available 
     and calculates the total cost of their bill
         
     Args:
         order(lst): the order of the customer
         
-    Returns: the total cost of their bill and if there are any items not available
+    Returns: the total cost of their bill
     """
+    
+    
+  def peak_hours(time):
+    """Summary: calcuates the time of day that orders are most commonly made
+    
+    Args: 
+        time(int): the hour that the order is made in 
+        
+    Returns:
+      the most orders in the hour
+    """
+    pass
   
 class Restaurant():
   """This creates the restaurant class that is the basics of the restaurant
@@ -85,17 +103,7 @@ class Restaurant():
     """
     pass
   
-  def peak_hours(time):
-    """Summary: calcuates the time of day that orders are most commonly made
-    
-    Args: 
-        time(int): the hour that the order is made in 
-        
-    Returns:
-      the most orders in the hour
-    """
-    pass
-
+  
 
 def write_file(head_lst, data_lst):
   """Using data from orders done in resturants, with the utilization of the pandas library
@@ -135,7 +143,7 @@ def main(name, access_code = None):
   #funct will call for functs and classes
   pass #<-temp
   
-def parse_args(args):
+def parse_args(argslist):
   """Parse command line arguments
 
   Args:
@@ -146,14 +154,18 @@ def parse_args(args):
   """
   parser = ArgumentParser()
   parser.add_argument("filepath")
+  parser.add_argument("column")
 
   args = parser.parse_args(argslist)
   if args.filepath is None:
     raise ValueError("Missing filepath")
+  if args.column is None:
+    raise ValueError("Name of Column?")
   return args
 
 if __name__ == '__main__':
   main()
+  parse_args()
 #any other functs youd like to run during the call.
 
 
