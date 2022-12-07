@@ -37,7 +37,7 @@ class Customers():
     self.order_num = order_num
     self.time = time 
   
-  def order_total(order):
+  def order_total(self, order):
     """Takes in the customers order and checks if it is available 
     and calculates the total cost of their bill
         
@@ -46,6 +46,10 @@ class Customers():
         
     Returns: the total cost of their bill
     """
+    order_lst = []
+    order_lst.append(self.order.split("\n"))
+    for item in order_lst:
+      menu[itemgit ]
     
     
   def peak_hours(time):
