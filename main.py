@@ -3,6 +3,7 @@ import csv
 import matplotlib.pyplot as plt
 import datetime
 from argparse import ArgumentParser
+import random 
 
 class Customers():
   """Creates a customer object that can order food. Takes information of customer, what the order is, and time the order is made.
