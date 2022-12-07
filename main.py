@@ -88,7 +88,8 @@ class Restaurant():
        Returns: 
           in_stock (boolean): inside an f-string, returns if the item is out of stock 
      """
-     for orders in self.order:
+    order_list = [self.orders.key() for keys in self.orders]
+    for orders in order_list:
         if inventory.values() == 0:
             print(f"{inventory.keys()} is out of stock")
   
