@@ -10,6 +10,7 @@ def main():
   
   plt.bar(x=df['Item Name'].head(7), height=df['Quantity'].head(7))
   plt.savefig('data.png')
+  print('Done with the graph!')
 
 
 if __name__ == '__main__':
