@@ -3,6 +3,7 @@ import csv
 import matplotlib.pyplot as plt
 import datetime
 from argparse import ArgumentParser
+import json
 
 class Customers():
   """Creates a customer object that can order food. Takes information of customer, what the order is, and time the order is made.
@@ -49,7 +50,7 @@ class Customers():
     order_lst = []
     order_lst.append(self.order.split("\n"))
     for item in order_lst:
-      menu[itemgit ]
+      menu[itemg]
     
     
   def peak_hours(time):
