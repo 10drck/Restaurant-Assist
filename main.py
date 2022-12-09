@@ -96,11 +96,9 @@ class Restaurant():
      """
     inventory = {(self.menu_item, random.randint(0,50))}
     order_list = list(orders.keys())
-    for orders in order_list:
-        if inventory.values() == 0:
-            print(f"{inventory.keys()} is out of stock")
-        else:
-          inventory.values() = inventory.values() - 1; 
+    final_list = [print(f"{inventory.keys()} is out of stock") 
+    for orders in order_list if inventory.values() == 0]
+    inventory[:][1] = inventory[:][1] - 1; 
   
   def profit():
     """Calculates the profit at the end of an ordering day 
