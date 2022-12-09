@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import datetime
 from argparse import ArgumentParser
 import json
+import random 
 
 class Customers():
   """Creates a customer object that can order food. Takes information of customer, what the order is, and time the order is made.
@@ -93,10 +94,13 @@ class Restaurant():
        Returns: 
           in_stock (boolean): inside an f-string, returns if the item is out of stock 
      """
-    order_list = [self.orders.key() for keys in self.orders]
+    inventory = {(self.menu_item, random.randint(0,50))}
+    order_list = list(orders.keys())
     for orders in order_list:
         if inventory.values() == 0:
             print(f"{inventory.keys()} is out of stock")
+        else:
+          inventory.values() = inventory.values() - 1; 
   
   def profit():
     """Calculates the profit at the end of an ordering day 
