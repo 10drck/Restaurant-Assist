@@ -109,7 +109,13 @@ class Restaurant():
       Returns: 
         Daily_profit(int): total profits for the day
     """
-    pass
+    revenue_df = pd.read_csv('orders_total.csv')
+    cost_df = pd.read_csv("resturant_costs.csv")
+    revenue_df.sum() - cost_df.sum()
+
+    with open('file_I_havent_made_yet', 'w') as profit_csv:
+      writer = csv.writer(profit_csv)
+      writer.writerow("")
   
   
 
