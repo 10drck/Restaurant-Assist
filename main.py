@@ -71,11 +71,22 @@ class Customers():
     Returns:
       the most orders in the hour
     """
-    #get the time 
-    #get the hour of the time 
+    times_list = []
+    #get the time #get the hour of the time 
+    for date in df["Order Date"]:
+        match = re.search(r"(\d{2}\/)(\d{2}\/\d{4} )(\d{2})(:\d{2})", date)
+        self.time = match.group(3)
+        times_list.append(self.time)
+    #make them integers
+    int_list = []
+    for time in times_list:
+        int_list.append(int(time))
     #order the times in order
+    int_list.sort()
     #count how many each time occurs
+    
     #determine the max time 
+    print(int_list)
   
 class Restaurant():
   """This creates the restaurant class that is the basics of the restaurant
