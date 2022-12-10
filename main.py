@@ -5,6 +5,7 @@ import datetime
 from argparse import ArgumentParser
 import json
 import random 
+import re
 
 class Customers():
   """Creates a customer object that can order food. Takes information of customer, what the order is, and time the order is made.
@@ -48,6 +49,13 @@ class Customers():
         
     Returns: the total cost of their bill
     """
+    
+    #creates a list of tuples (product, quantity) based on the order number 
+    
+    #for every quatnity mulitply by the producs price
+    #add all of the quanities together
+    #write to CSV file under Total_Bill
+    
     order_lst = []
     order_lst.append(self.order.split("\n"))
     for item in order_lst:
@@ -63,7 +71,11 @@ class Customers():
     Returns:
       the most orders in the hour
     """
-    pass
+    #get the time 
+    #get the hour of the time 
+    #order the times in order
+    #count how many each time occurs
+    #determine the max time 
   
 class Restaurant():
   """This creates the restaurant class that is the basics of the restaurant
