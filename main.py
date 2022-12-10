@@ -33,6 +33,7 @@ class Customers():
     Side effects: 
         Creates Customers attribute
     """
+    
     self.name = name
     self.phone = phone
     self.payment_type = payment_type
@@ -52,7 +53,7 @@ class Customers():
     
     #creates a list of tuples (product, quantity) based on the order number 
     
-    #for every quatnity mulitply by the producs price
+    #for every quatnity mulitply by the products price
     #add all of the quanities together
     #write to CSV file under Total_Bill
     
@@ -62,7 +63,7 @@ class Customers():
       menu[itemg]
     
     
-  def peak_hours(time):
+  def peak_hours(self, time):
     """Summary: calcuates the time of day that orders are most commonly made
     
     Args: 
@@ -73,7 +74,7 @@ class Customers():
     """
     times_list = []
     #get the time #get the hour of the time 
-    for date in df["Order Date"]:
+    for date in df.iterrows():
         match = re.search(r"(\d{2}\/)(\d{2}\/\d{4} )(\d{2})(:\d{2})", date)
         self.time = match.group(3)
         times_list.append(self.time)
@@ -170,7 +171,7 @@ def plot_data(data):
     
 
 
-def main(name, access_code = None):
+def main(ordersFile, ):
   """intialize objects in this code, call for pandas implimentation for data after the day.
 
   args:
@@ -178,6 +179,9 @@ def main(name, access_code = None):
     access_code(int): the access code of the employee
   """
   #funct will call for functs and classes
+  with open(ordersFile, 'r' ) as file:
+    df = pd.read_csv(file)
+  Customers(df)
   pass #<-temp
   
 def parse_args(argslist):
