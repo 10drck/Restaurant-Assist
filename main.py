@@ -18,7 +18,7 @@ class Customers():
     time(int): the time that the customer ordered
 
   """
-  def __init__(self, name, phone, payment_type, order, time = datetime.now()):
+  def __init__(self, data_frame):
     """Create and populate the object of customers using name, phone, payment_type,
     order, order_num, and time that will be passed through when intialized
     
@@ -34,14 +34,9 @@ class Customers():
         Creates Customers attribute
     """
     
-    self.name = name
-    self.phone = phone
-    self.payment_type = payment_type
-    self.order = order
-    self.order_num = order_num
-    self.time = time 
-  
-  def order_total(self, order):
+    self.data_frame = data_frame
+    
+  def order_total(self):
     """Takes in the customers order and checks if it is available 
     and calculates the total cost of their bill
         
@@ -63,7 +58,7 @@ class Customers():
       menu[itemg]
     
     
-  def peak_hours(self, time):
+  def peak_hours(self):
     """Summary: calcuates the time of day that orders are most commonly made
     
     Args: 
@@ -72,10 +67,11 @@ class Customers():
     Returns:
       the most orders in the hour
     """
+    
     times_list = []
     #get the time #get the hour of the time 
-    for date in df.iterrows():
-        match = re.search(r"(\d{2}\/)(\d{2}\/\d{4} )(\d{2})(:\d{2})", date)
+    for index, row in self.data_frame.iterrows():
+        match = re.search(r"(\d{2}\/)(\d{2}\/\d{4} )(\d{2})(:\d{2})", row["OrderDate"])
         self.time = match.group(3)
         times_list.append(self.time)
     #make them integers
@@ -85,9 +81,12 @@ class Customers():
     #order the times in order
     int_list.sort()
     #count how many each time occurs
-    
+    final_list = []
+    for nums in int_list:
+      final_list.append((nums, int_list.count(nums)))
     #determine the max time 
-    print(int_list)
+    max(final_list())
+    
   
 class Restaurant():
   """This creates the restaurant class that is the basics of the restaurant
@@ -179,10 +178,11 @@ def main(ordersFile, ):
     access_code(int): the access code of the employee
   """
   #funct will call for functs and classes
+  #open the given file which is a csv
   with open(ordersFile, 'r' ) as file:
     df = pd.read_csv(file)
+  #call customers class to pass in the csv file
   Customers(df)
-  pass #<-temp
   
 def parse_args(argslist):
   """Parse command line arguments
