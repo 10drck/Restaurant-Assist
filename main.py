@@ -1,7 +1,6 @@
 import pandas as pd
 import csv
 import matplotlib.pyplot as plt
-import datetime
 from argparse import ArgumentParser
 import json
 import random 
@@ -34,7 +33,7 @@ class Customers():
         Creates Customers attribute
     """
     
-    self.data_frame = data_frame
+    self.df = data_frame
     
   def order_total(self):
     """Takes in the customers order and checks if it is available 
@@ -45,18 +44,33 @@ class Customers():
         
     Returns: the total cost of their bill
     """
-    
-    #creates a list of tuples (product, quantity) based on the order number 
-    
-    #for every quatnity mulitply by the products price
-    #add all of the quanities together
-    #write to CSV file under Total_Bill
-    
-    order_lst = []
-    order_lst.append(self.order.split("\n"))
-    for item in order_lst:
-      menu[itemg]
-    
+    order_id = self.df.loc[0, "Order Number"]
+    #print("orderid", order_id)
+    order_ids = []
+    order_total = []
+    for index in range(len(df)):
+        if index == 0:
+            order_id = self.df.loc[index, "Order Number"]
+            quantity = self.df.loc[index, "Quantity"]
+            product_price = self.df.loc[index, "Product Price"]
+            total = quantity * product_price
+        else:
+            if order_id == self.df.loc[index, "Order Number"]:
+                quantity = self.df.loc[index, "Quantity"]
+                product_price = self.df.loc[index, "Product Price"]
+                total = total + (quantity * product_price)
+            else:
+              #how to write to csv file?
+                print(order_id, total)
+                order_ids.append(order_id)
+                order_total.append(total)
+                write_file(order_ids, order_total)
+                order_id = self.df.loc[index, "Order Number"]
+                quantity = self.df.loc[index, "Quantity"]
+                product_price = self.df.loc[index, "Product Price"]
+                total = 0
+                total = total + (quantity * product_price)
+
     
   def peak_hours(self):
     """Summary: calcuates the time of day that orders are most commonly made
@@ -190,6 +204,9 @@ def main(ordersFile, ):
   #open the given file which is a csv
   with open(ordersFile, 'r' ) as file:
     df = pd.read_csv(file)
+    
+  with open(menu, 'r', encoding = 'utf-8') as f:
+        menu = json.load(f)
   #call customers class to pass in the csv file
   Customers(df)
   
