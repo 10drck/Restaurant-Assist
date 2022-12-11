@@ -17,7 +17,7 @@ class Customers():
     time(int): the time that the customer ordered
 
   """
-  def __init__(self, data_frame, menu):
+  def __init__(self, data_frame):
     """Create and populate the object of customers using name, phone, payment_type,
     order, order_num, and time that will be passed through when intialized
     
@@ -34,7 +34,6 @@ class Customers():
     """
     
     self.df = data_frame
-    self.menu = menu
     
   def order_total(self):
     """Takes in the customers order and checks if it is available 
@@ -195,7 +194,7 @@ def main(ordersFile, ):
   with open(menu, 'r', encoding = 'utf-8') as f:
         menu = json.load(f)
   #call customers class to pass in the csv file
-  Customers(df, menu)
+  Customers(df)
   
 def parse_args(argslist):
   """Parse command line arguments
