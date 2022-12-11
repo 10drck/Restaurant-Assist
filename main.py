@@ -45,7 +45,9 @@ class Customers():
     Returns: the total cost of their bill
     """
     order_id = self.df.loc[0, "Order Number"]
-    print("orderid", order_id)
+    #print("orderid", order_id)
+    order_ids = []
+    order_total = []
     for index in range(len(df)):
         if index == 0:
             order_id = self.df.loc[index, "Order Number"]
@@ -60,6 +62,9 @@ class Customers():
             else:
               #how to write to csv file?
                 print(order_id, total)
+                order_ids.append(order_id)
+                order_total.append(total)
+                write_file(order_ids, order_total)
                 order_id = self.df.loc[index, "Order Number"]
                 quantity = self.df.loc[index, "Quantity"]
                 product_price = self.df.loc[index, "Product Price"]
