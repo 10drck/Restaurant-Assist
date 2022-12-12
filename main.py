@@ -187,14 +187,23 @@ def write_file(head_lst, data_lst):
     writer.writerows(data_lst) # write mutiple rows.
     #can also use dicts 
 
-def plot_data(data):
+def plot_data(data_csv):
   """Using the data that is passed through, plot a cohesive diagram for the owner to indicate trends in their resturant
 
   Args:
     data (list): list containing the data to plot
   """
-  #plt.bar(left, values, tick_label = tick_label, width = .9, color = x) <- bar
-  #could use pie (show margins) or line for other data
+  plt.figure(figsize =(10,10), dpi=100) # figure size for plotting 
+
+  df = pd.read_csv(data_csv)
+  df = df.drop(['Order Number', 'Order Date', 'Product Price', 'Total products'], axis=1) # drops columns for reading
+
+  df = df.groupby(['Item Name'], as_index=False, sort=False).sum().sort_values(by=['Quantity'], ascending=False) # grouping to view quantities
+  #print(df.head(3))
+  
+  plt.bar(x=df['Item Name'].head(7), height=df['Quantity'].head(7))
+  plt.savefig('data.png') # saves to directory as 'data.png'
+  print('Done with the graph!')
     
 
 
