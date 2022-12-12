@@ -83,23 +83,37 @@ class Customers():
     """
     
     times_list = []
-    #get the time #get the hour of the time 
-    for index, row in self.data_frame.iterrows():
-        match = re.search(r"(\d{2}\/)(\d{2}\/\d{4} )(\d{2})(:\d{2})", row["OrderDate"])
-        self.time = match.group(3)
-        times_list.append(self.time)
-    #make them integers
-    int_list = []
-    for time in times_list:
-        int_list.append(int(time))
-    #order the times in order
-    int_list.sort()
-    #count how many each time occurs
-    final_list = []
-    for nums in int_list:
-      final_list.append((nums, int_list.count(nums)))
-    #determine the max time 
-    max(final_list())
+
+    for index in range(len(df)):
+        if index == 0:
+            order_id = df.loc[index, "Order Number"]
+            date = df.loc[index, "Order Date"]
+            match = re.search(r"(\d{2}\/)(\d{2}\/\d{4} )(\d{2})(:\d{2})", date)
+            hour = match.group(3)
+            times_list.append(hour)
+        else:
+            if order_id != df.loc[index, "Order Number"]:
+                date = df.loc[index, "Order Date"]
+                match = re.search(r"(\d{2}\/)(\d{2}\/\d{4} )(\d{2})(:\d{2})", date)
+                hour = match.group(3)
+                times_list.append(hour)
+                order_id = df.loc[index, "Order Number"]
+        
+    elements_count = {}
+
+    for element in times_list:
+        if element in elements_count:
+            elements_count[element] += 1
+        else:
+            elements_count[element] = 1
+    for key, value in elements_count.items():
+        print(f"{key}:{value}")
+        
+    max_value = max(elements_count.values())
+    # print(max_value)
+    # print(elements_count.items(max_value))
+
+    #print(len(times_list))
     
   
 class Restaurant():
