@@ -151,9 +151,14 @@ class Restaurant():
     #create a list of the ordered items 
     order_list = list(pd.read_csv('resturant-1-orders.csv', usecols = ["Item Name"]))
     
+    #update the inventory for each order 
+    [inventory.values()-=1 for orders in order_list if inventory.values() >= 1] 
+    
     #print out if an order is out of stock
-    [print(f"{inventory.keys()} is out of stock") for orders in order_list if inventory.values() == 0]
-    inventory[:][1] = inventory[:][1] - 1
+    for orders in order_list:
+      if inventory.values() == 0:
+        print(f"{inventory.keys()} is out of stock")
+
   
   def profit(self):
     """Calculates the profit at the end of the month, creates a csv file with relevant information 
