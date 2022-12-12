@@ -194,8 +194,8 @@ def parse_args(argslist):
       args: parsed arguments
   """
   parser = ArgumentParser()
-  parser.add_argument("filepath")
-  parser.add_argument("column")
+  parser.add_argument("filepath", help="file containing food items and stocks")
+  parser.add_argument("column", help="column from the file")
 
   args = parser.parse_args(argslist)
   if args.filepath is None:
