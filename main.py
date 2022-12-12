@@ -84,20 +84,20 @@ class Customers():
     
     times_list = []
 
-    for index in range(len(df)):
+    for index in range(len(self.df)):
         if index == 0:
-            order_id = df.loc[index, "Order Number"]
-            date = df.loc[index, "Order Date"]
-            match = re.search(r"(\d{2}\/)(\d{2}\/\d{4} )(\d{2})(:\d{2})", date)
+            order_id = self.df.loc[index, "Order Number"]
+            date = self.df.loc[index, "Order Date"]
+            match = re.search(r"(\d{1,2}\/)(\d{1,2}\/\d{2,4} )(\d{1,2})(:\d{1,2})", date)
             hour = match.group(3)
             times_list.append(hour)
         else:
-            if order_id != df.loc[index, "Order Number"]:
-                date = df.loc[index, "Order Date"]
-                match = re.search(r"(\d{2}\/)(\d{2}\/\d{4} )(\d{2})(:\d{2})", date)
+            if order_id != self.df.loc[index, "Order Number"]:
+                date = self.df.loc[index, "Order Date"]
+                match = re.search(r"(\d{1,2}\/)(\d{1,2}\/\d{2,4} )(\d{1,2})(:\d{1,2})", date)
                 hour = match.group(3)
                 times_list.append(hour)
-                order_id = df.loc[index, "Order Number"]
+                order_id = self.df.loc[index, "Order Number"]
         
     elements_count = {}
 
