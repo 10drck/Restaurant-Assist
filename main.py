@@ -6,8 +6,8 @@ import json
 import random 
 import re
 
-class Customers():
-  """Creates a customer object that can order food. Takes information of customer, what the order is, and time the order is made.
+class Restaurant():
+  """Creates a customer  object that can order food. Takes information of customer, what the order is, and time the order is made.
   
   Attributes: 
     name(str): name of the customer
@@ -30,7 +30,7 @@ class Customers():
         time (int): the hour they ordered in
     
     Side effects: 
-        Creates Customers attribute
+        Creates Restaurant attribute
     """
     
     self.df = data_frame
@@ -109,59 +109,84 @@ class Customers():
     for key, value in elements_count.items():
         print(f"{key}:{value}")
         
-    return elements_count
-  
-class Restaurant():
-  """This creates the restaurant class that is the basics of the restaurant
+    max_value = max(elements_count.values())
+    # print(max_value)
+    # print(elements_count.items(max_value))
+
+    #print(len(times_list))
+    
+  def create_customer_bill(first_list, second_list):
+      bill_list = [(first_list[i], second_list[i]) for i in range(0, len(first_list))]
+      return bill_list
+    
+  def __str__ (bill_list):
+      for bills in bill_list:
+          for order_id in bills:
+              return f"{order_id}"
             
   Attributes:
-      location(str): the location of the restaurant
-      name(str): the name of the restaurant
-      inventory(dict): nested dictionaries
+      menu_items (dict): the items on the menu 
+      inventory (dict): the menu items and the amount left that they have 
   """
-  def __init__(self, location, name, inventory):
+   def __init__(self,inventory):
     """Create and populates the object for resurants using the location, name, and inventory of said insitution
-
     Args:
-        location (str): the location of the restaurant, address
-        name (str): the name of the restaurant
         inventory (dict): this is an inventory of all of the food items that the 
         restaurant has in stock
-    """
-    self.location = location
-    self.name = name
-    self.inventory = inventory
-  
-  def check_availability():
-    """Filters the inventory csv against the order list 
-       Args: 
-          inventory (dict): the remaining food in the restaurant 
-          order(dict): the order that was input 
-       Returns: 
-          in_stock (boolean): inside an f-string, returns if the item is out of stock 
-     """
+        
+    """ 
+    self.inventory = inventory 
+    #create the inventory     
     inventory = {(self.menu_item, random.randint(0,50))}
-    order_list = list(orders.keys())
-    final_list = [print(f"{inventory.keys()} is out of stock") 
-    for orders in order_list if inventory.values() == 0]
-    inventory[:][1] = inventory[:][1] - 1; 
+    
+    #create the list of menu items as an attribute 
+    self.menu_items = pd.read_json("menu.json")
+    self.menu_items = list(self.menu_items.keys())
   
-  def profit():
-    """Calculates the profit at the end of an ordering day 
+  def check_availability(self, inventory):
+    """ uses list comprehension to add dictionary keys to a list in order to determine if an item is out of stock 
+       Args: 
+          inventory (dict):value: the remaining food in the restaurant keys: amount of the item (int)
+          order_list (lst): list of input orders 
+       Returns: 
+          updates the inventory dictionary 
+          prints out out of stock items 
+     """
+    
+    #create a list of the ordered items 
+    order_list = list(pd.read_csv('resturant-1-orders.csv', usecols = ["Item Name"]))
+    
+    #update the inventory for each order 
+    [inventory.values()-=1 for orders in order_list if inventory.values() >= 1] 
+    
+    #print out if an order is out of stock
+    for orders in order_list:
+      if inventory.values() == 0:
+        print(f"{inventory.keys()} is out of stock")
+
+  
+  def profit(self):
+    """Calculates the profit at the end of the month, creates a csv file with relevant information 
+    expenses - revenu (printed by the orders_total) 
+
        Args: 
             Orders_total (int): the combined total money from the orders 
-            Staff_wages (int): the combined total wages of the staff for the day 
-            Passive_costs (int): set cost of the restaurant bills (rent, electric, etc) set arbitrability by us 
       Returns: 
-        Daily_profit(int): total profits for the day
+        profit as plain text 
+        monthly_profit(csv df): total profits for the day
     """
-    revenue_df = pd.read_csv('orders_total.csv')
+    #create the two dataframes out of the csv files
+    revenue_df = pd.read_csv('resturant-1-orders.csv', usecols = ["orders_total"])
     cost_df = pd.read_csv("resturant_costs.csv")
-    revenue_df.sum() - cost_df.sum()
-
-    with open('file_I_havent_made_yet', 'w') as profit_csv:
-      writer = csv.writer(profit_csv)
-      writer.writerow("")
+    
+    #calculate the profit 
+    profit = list(revenue_df.sum() - cost_df.sum())
+    
+    # return profit 
+    return profit 
+    #write to a new file (can't write to the main file, it isn't sorted by the order number)
+    write_file()
+    
   
   
 
@@ -202,7 +227,7 @@ def plot_data(data_csv):
     
 
 
-def main(ordersFile, ):
+def main(ordersFile):
   """intialize objects in this code, call for pandas implimentation for data after the day.
 
   args:
@@ -210,14 +235,24 @@ def main(ordersFile, ):
     access_code(int): the access code of the employee
   """
   #funct will call for functs and classes
+  
+  #time_analysis()
+  
   #open the given file which is a csv
   with open(ordersFile, 'r' ) as file:
     df = pd.read_csv(file)
-    
-  with open(menu, 'r', encoding = 'utf-8') as f:
-        menu = json.load(f)
-  #call customers class to pass in the csv file
-  Customers(df)
+  
+  #call Restaurant class to pass in the csv file
+  Restaurant(df)
+
+  #time_analysis()
+  customerinput = input(f"Would you like to see {filename} as a plot? Yes or No")
+  if customerinput.lower() == "yes" or "y":
+    plot_data()
+  elif customerinput.lower() == "no" or "n":
+    pass
+  else:
+    print("That was an invalid input")
   
 def parse_args(argslist):
   """Parse command line arguments
@@ -240,8 +275,10 @@ def parse_args(argslist):
   return args
 
 if __name__ == '__main__':
-  main()
-  parse_args()
+  filename = parse_args()
+  main(filename)
+  
+
 #any other functs youd like to run during the call.
 
 
