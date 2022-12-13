@@ -164,14 +164,10 @@ def plot_data(data_csv):
   df = pd.read_csv(data_csv)
   df = df.drop(['Order Number', 'Order Date', 'Product Price', 'Total products'], axis=1) # drops columns for reading
 
-  df = df.groupby(['Item Name'], as_index=False, sort=False).sum().sort_values(by=['Quantity'], ascending=False) # grouping to view quantities
-  #print(df.head(3))
-  
+  df = df.groupby(['Item Name'], as_index=False, sort=False).sum().sort_values(by=['Quantity'], ascending=False) # grouping to view quantities  
   plt.bar(x=df['Item Name'].head(7), height=df['Quantity'].head(7))
   plt.savefig('data.png') # saves to directory as 'data.png'
   print('Done with the graph!')
-    
-
 
 def main(ordersFile):
   """intialize objects in this code, call for pandas implimentation for data after the day.
@@ -181,8 +177,6 @@ def main(ordersFile):
     access_code(int): the access code of the employee
   """
   #funct will call for functs and classes
-  
-  
   #open the given file which is a csv
   with open(ordersFile, 'r' ) as file:
     df = pd.read_csv(file)
