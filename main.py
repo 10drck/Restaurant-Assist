@@ -48,7 +48,7 @@ class Customers():
     #print("orderid", order_id)
     order_ids = []
     order_total = []
-    for index in range(len(df)):
+    for index in range(len(self.df)):
         if index == 0:
             order_id = self.df.loc[index, "Order Number"]
             quantity = self.df.loc[index, "Quantity"]
