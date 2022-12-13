@@ -133,21 +133,26 @@ def time_analysis(elements_count):
     max_hour = [time for time, value in elements_count.items() if value == max(elements_count.values())]
     min_hour = [time for time, value in elements_count.items() if value == min(elements_count.values())]  
 
-def write_file(head_lst, data_lst):
+def write_file(x):
   """Using data from orders done in resturants, with the utilization of the pandas library
    be able to write to a csv to allow for spread sheet view.
+
   args:
     head_lst (lst): list containing the header names
     data_lst (lst): list containing the data
     can also be a dict
   """
   #replace with pandas code
+  ids = x[0]
+  totals = x[1]
 
-  with open('.csv', 'w', encoding='UTF-8') as f:
-    writer = csv.writer(f)
-    writer.writerow(head_lst) # write the header
-    writer.writerows(data_lst) # write mutiple rows.
-    #can also use dicts 
+  df = pd.DataFrame(
+    {
+      'ids': ids,
+      'totals': totals
+    }
+  )
+  df.to_csv('test.csv')
 
 def plot_data(data_csv):
   """Using the data that is passed through, plot a cohesive diagram for the owner to indicate trends in their resturant
