@@ -115,75 +115,23 @@ class Restaurant():
 
     #print(len(times_list))
     
-  
-class Restaurant():
-  """This creates the restaurant class that is the basics of the restaurant
+  def create_customer_bill(first_list, second_list):
+      bill_list = [(first_list[i], second_list[i]) for i in range(0, len(first_list))]
+      return bill_list
+    
+  def __str__ (bill_list):
+      for bills in bill_list:
+          for order_id in bills:
+              return f"{order_id}"
             
-  Attributes:
-      menu_items (dict): the items on the menu 
-      inventory (dict): the menu items and the amount left that they have 
-  """
-  def __init__(self,inventory):
-    """Create and populates the object for resurants using the location, name, and inventory of said insitution
-    Args:
-        inventory (dict): this is an inventory of all of the food items that the 
-        restaurant has in stock
-        
-    """ 
-    self.inventory = inventory 
-    #create the inventory     
-    inventory = {(self.menu_item, random.randint(0,50))}
-    
-    #create the list of menu items as an attribute 
-    self.menu_items = pd.read_json("menu.json")
-    self.menu_items = list(self.menu_items.keys())
-  
-  def check_availability(self, inventory):
-    """ uses list comprehension to add dictionary keys to a list in order to determine if an item is out of stock 
-       Args: 
-          inventory (dict):value: the remaining food in the restaurant keys: amount of the item (int)
-          order_list (lst): list of input orders 
-       Returns: 
-          updates the inventory dictionary 
-          prints out out of stock items 
-     """
-    
-    #create a list of the ordered items 
-    order_list = list(pd.read_csv('resturant-1-orders.csv', usecols = ["Item Name"]))
-    
-    #update the inventory for each order 
-    [inventory.values()-=1 for orders in order_list if inventory.values() >= 1] 
-    
-    #print out if an order is out of stock
-    for orders in order_list:
-      if inventory.values() == 0:
-        print(f"{inventory.keys()} is out of stock")
 
-  
-  def profit(self):
-    """Calculates the profit at the end of the month, creates a csv file with relevant information 
-    expenses - revenu (printed by the orders_total) 
-
-       Args: 
-            Orders_total (int): the combined total money from the orders 
-      Returns: 
-        profit as plain text 
-        monthly_profit(csv df): total profits for the day
+def time_analysis(elements_count):
+    """ take in elements_count dictionary run min() and max(); return as a variables max_hour and min_hour
     """
-    #create the two dataframes out of the csv files
-    revenue_df = pd.read_csv('resturant-1-orders.csv', usecols = ["orders_total"])
-    cost_df = pd.read_csv("resturant_costs.csv")
-    
-    #calculate the profit 
-    profit = list(revenue_df.sum() - cost_df.sum())
-    
-    # return profit 
-    return profit 
-    #write to a new file (can't write to the main file, it isn't sorted by the order number)
-    write_file()
-    
-  
-  
+    #iterate through the dictionary; print the key with the highest value
+    # iterate through the dictionary; print the key with the lowest value
+    max_hour = [time for time, value in elements_count.items() if value == max(elements_count.values())]
+    min_hour = [time for time, value in elements_count.items() if value == min(elements_count.values())]  
 
 def write_file(head_lst, data_lst):
   """Using data from orders done in resturants, with the utilization of the pandas library
