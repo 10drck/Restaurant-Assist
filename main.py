@@ -243,7 +243,6 @@ def main(ordersFile):
   #time_analysis()
   customerinput = input(f"Would you like to see {filename} as a plot? Yes or No")
   if customerinput.lower() == "yes" or "y":
-    fileinput = input("Please input the name of the file")
     plot_data()
   elif customerinput.lower() == "no" or "n":
     pass
