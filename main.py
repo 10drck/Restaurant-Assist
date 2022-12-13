@@ -5,9 +5,10 @@ from argparse import ArgumentParser
 import json
 import random 
 import re
+import sys
 
-class Customers():
-  """Creates a customer object that can order food. Takes information of customer, what the order is, and time the order is made.
+class RestaurantData():
+  """Creates a customer  object that can order food. Takes information of customer, what the order is, and time the order is made.
   
   Attributes: 
     name(str): name of the customer
@@ -15,7 +16,6 @@ class Customers():
     payment_type(str): customers payment type
     order(list): what the customer orders
     time(int): the time that the customer ordered
-
   """
   def __init__(self, data_frame):
     """Create and populate the object of customers using name, phone, payment_type,
@@ -30,7 +30,7 @@ class Customers():
         time (int): the hour they ordered in
     
     Side effects: 
-        Creates Customers attribute
+        Creates Restaurant attribute
     """
     
     self.df = data_frame
@@ -48,7 +48,7 @@ class Customers():
     #print("orderid", order_id)
     order_ids = []
     order_total = []
-    for index in range(len(df)):
+    for index in range(len(self.df)):
         if index == 0:
             order_id = self.df.loc[index, "Order Number"]
             quantity = self.df.loc[index, "Quantity"]
@@ -61,15 +61,16 @@ class Customers():
                 total = total + (quantity * product_price)
             else:
               #how to write to csv file?
-                print(order_id, total)
+                #print(order_ids, order_total)
                 order_ids.append(order_id)
                 order_total.append(total)
-                write_file(order_ids, order_total)
                 order_id = self.df.loc[index, "Order Number"]
                 quantity = self.df.loc[index, "Quantity"]
                 product_price = self.df.loc[index, "Product Price"]
                 total = 0
                 total = total + (quantity * product_price)
+    x = [order_ids, order_total]
+    return x
 
     
   def peak_hours(self):
@@ -83,80 +84,57 @@ class Customers():
     """
     
     times_list = []
-    #get the time #get the hour of the time 
-    for index, row in self.data_frame.iterrows():
-        match = re.search(r"(\d{2}\/)(\d{2}\/\d{4} )(\d{2})(:\d{2})", row["OrderDate"])
-        self.time = match.group(3)
-        times_list.append(self.time)
-    #make them integers
-    int_list = []
-    for time in times_list:
-        int_list.append(int(time))
-    #order the times in order
-    int_list.sort()
-    #count how many each time occurs
-    final_list = []
-    for nums in int_list:
-      final_list.append((nums, int_list.count(nums)))
-    #determine the max time 
-    max(final_list())
+
+    for index in range(len(self.df)):
+        if index == 0:
+            order_id = self.df.loc[index, "Order Number"]
+            date = self.df.loc[index, "Order Date"]
+            match = re.search(r"(\d{1,2}\/)(\d{1,2}\/\d{2,4} )(\d{1,2})(:\d{1,2})", date)
+            hour = match.group(3)
+            times_list.append(hour)
+        else:
+            if order_id != self.df.loc[index, "Order Number"]:
+                date = self.df.loc[index, "Order Date"]
+                match = re.search(r"(\d{1,2}\/)(\d{1,2}\/\d{2,4} )(\d{1,2})(:\d{1,2})", date)
+                hour = match.group(3)
+                times_list.append(hour)
+                order_id = self.df.loc[index, "Order Number"]
+        
+    elements_count = {}
+
+    for element in times_list:
+        if element in elements_count:
+            elements_count[element] += 1
+        else:
+            elements_count[element] = 1
+    for key, value in elements_count.items():
+        print(f"{key}:{value}")
+        
+    max_value = max(elements_count.values())
+    # print(max_value)
+    # print(elements_count.items(max_value))
+
+    #print(len(times_list))
     
-  
-class Restaurant():
-  """This creates the restaurant class that is the basics of the restaurant
+  def create_customer_bill(first_list, second_list):
+      bill_list = [(first_list[i], second_list[i]) for i in range(0, len(first_list))]
+      return bill_list
+    
+  def __str__ (bill_list):
+      for bills in bill_list:
+          for order_id in bills:
+              return f"{order_id}"
             
-  Attributes:
-      location(str): the location of the restaurant
-      name(str): the name of the restaurant
-      inventory(dict): nested dictionaries
-  """
-  def __init__(self, location, name, inventory):
-    """Create and populates the object for resurants using the location, name, and inventory of said insitution
 
-    Args:
-        location (str): the location of the restaurant, address
-        name (str): the name of the restaurant
-        inventory (dict): this is an inventory of all of the food items that the 
-        restaurant has in stock
+def time_analysis(elements_count):
+    """ take in elements_count dictionary run min() and max(); return as a variables max_hour and min_hour
     """
-    self.location = location
-    self.name = name
-    self.inventory = inventory
-  
-  def check_availability():
-    """Filters the inventory csv against the order list 
-       Args: 
-          inventory (dict): the remaining food in the restaurant 
-          order(dict): the order that was input 
-       Returns: 
-          in_stock (boolean): inside an f-string, returns if the item is out of stock 
-     """
-    inventory = {(self.menu_item, random.randint(0,50))}
-    order_list = list(orders.keys())
-    final_list = [print(f"{inventory.keys()} is out of stock") 
-    for orders in order_list if inventory.values() == 0]
-    inventory[:][1] = inventory[:][1] - 1; 
-  
-  def profit():
-    """Calculates the profit at the end of an ordering day 
-       Args: 
-            Orders_total (int): the combined total money from the orders 
-            Staff_wages (int): the combined total wages of the staff for the day 
-            Passive_costs (int): set cost of the restaurant bills (rent, electric, etc) set arbitrability by us 
-      Returns: 
-        Daily_profit(int): total profits for the day
-    """
-    revenue_df = pd.read_csv('orders_total.csv')
-    cost_df = pd.read_csv("resturant_costs.csv")
-    revenue_df.sum() - cost_df.sum()
+    #iterate through the dictionary; print the key with the highest value
+    # iterate through the dictionary; print the key with the lowest value
+    max_hour = [time for time, value in elements_count.items() if value == max(elements_count.values())]
+    min_hour = [time for time, value in elements_count.items() if value == min(elements_count.values())]  
 
-    with open('file_I_havent_made_yet', 'w') as profit_csv:
-      writer = csv.writer(profit_csv)
-      writer.writerow("")
-  
-  
-
-def write_file(head_lst, data_lst):
+def write_file(x):
   """Using data from orders done in resturants, with the utilization of the pandas library
    be able to write to a csv to allow for spread sheet view.
 
@@ -166,16 +144,19 @@ def write_file(head_lst, data_lst):
     can also be a dict
   """
   #replace with pandas code
+  ids = x[0]
+  totals = x[1]
 
-  with open('.csv', 'w', encoding='UTF-8') as f:
-    writer = csv.writer(f)
-    writer.writerow(head_lst) # write the header
-    writer.writerows(data_lst) # write mutiple rows.
-    #can also use dicts 
+  df = pd.DataFrame(
+    {
+      'ids': ids,
+      'totals': totals
+    }
+  )
+  df.to_csv('test.csv') #<- allocated file
 
 def plot_data(data_csv):
   """Using the data that is passed through, plot a cohesive diagram for the owner to indicate trends in their resturant
-
   Args:
     data (list): list containing the data to plot
   """
@@ -184,16 +165,12 @@ def plot_data(data_csv):
   df = pd.read_csv(data_csv)
   df = df.drop(['Order Number', 'Order Date', 'Product Price', 'Total products'], axis=1) # drops columns for reading
 
-  df = df.groupby(['Item Name'], as_index=False, sort=False).sum().sort_values(by=['Quantity'], ascending=False) # grouping to view quantities
-  #print(df.head(3))
-  
+  df = df.groupby(['Item Name'], as_index=False, sort=False).sum().sort_values(by=['Quantity'], ascending=False) # grouping to view quantities  
   plt.bar(x=df['Item Name'].head(7), height=df['Quantity'].head(7))
   plt.savefig('data.png') # saves to directory as 'data.png'
   print('Done with the graph!')
-    
 
-
-def main(ordersFile, ):
+def main(ordersFile):
   """intialize objects in this code, call for pandas implimentation for data after the day.
 
   args:
@@ -204,15 +181,28 @@ def main(ordersFile, ):
   #open the given file which is a csv
   with open(ordersFile, 'r' ) as file:
     df = pd.read_csv(file)
-    
-  with open(menu, 'r', encoding = 'utf-8') as f:
-        menu = json.load(f)
-  #call customers class to pass in the csv file
-  Customers(df)
+  
+  #call Restaurant class to pass in the csv file
+  restaurantdata = RestaurantData(df) 
+  
+  write_file(RestaurantData.order_total(restaurantdata))
+  
+  time_analysis(RestaurantData.peak_hours())
+  
+  print(RestaurantData.__str__())
+  
+
+  #time_analysis()
+  customerinput = input(f"Would you like to see {args} as a plot? Yes or No")
+  if customerinput.lower() == "yes":
+    plot_data(ordersFile)
+  elif customerinput.lower() == "no":
+    pass
+  else:
+    print("That was an invalid input")
   
 def parse_args(argslist):
   """Parse command line arguments
-
   Args:
       args (string): command line arguments
       
@@ -220,19 +210,18 @@ def parse_args(argslist):
       args: parsed arguments
   """
   parser = ArgumentParser()
-  parser.add_argument("filepath")
-  parser.add_argument("column")
-
-  args = parser.parse_args(argslist)
-  if args.filepath is None:
-    raise ValueError("Missing filepath")
-  if args.column is None:
-    raise ValueError("Name of Column?")
-  return args
+  parser.add_argument("file", help="file containing food items and stocks")
+  
+  return parser.parse_args(argslist)
 
 if __name__ == '__main__':
-  main()
-  parse_args()
+  try:
+    args = parse_args(sys.argv[1:])
+  except ValueError as e:
+    sys.exit(str(e))
+  #print(args.file)
+  main(args.file)
+
 #any other functs youd like to run during the call.
 
 
@@ -243,6 +232,5 @@ if __name__ == '__main__':
     
   Files being result/what's shown to operator:
     csv file will be written to about some of the data that is coming from the customers to view certain trends in different orders to help the resturant to bring in more reccuring customers and get more revenue.
-
     when presented the option, if the resturant owner would like to view  trends we will be able to present a plot containing some of that data trends found in the particular data through the utilization of the pandas library.
   """
