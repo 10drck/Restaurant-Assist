@@ -129,7 +129,7 @@ class RestaurantData():
       menu_items (dict): the items on the menu 
       inventory (dict): the menu items and the amount left that they have 
   """
-   def __init__(self,inventory):
+    def __init__(self,inventory):
     """Create and populates the object for resurants using the location, name, and inventory of said insitution
     Args:
         inventory (dict): this is an inventory of all of the food items that the 
