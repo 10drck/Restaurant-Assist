@@ -6,7 +6,7 @@ import json
 import random 
 import re
 
-class Restaurant():
+class RestaurantData():
   """Creates a customer  object that can order food. Takes information of customer, what the order is, and time the order is made.
   
   Attributes: 
@@ -179,14 +179,12 @@ def main(ordersFile):
   """
   #funct will call for functs and classes
   
-  #time_analysis()
-  
   #open the given file which is a csv
   with open(ordersFile, 'r' ) as file:
     df = pd.read_csv(file)
   
   #call Restaurant class to pass in the csv file
-  Restaurant(df)
+  RestaurantData(df) 
 
   #time_analysis()
   customerinput = input(f"Would you like to see {filename} as a plot? Yes or No")
@@ -219,6 +217,7 @@ def parse_args(argslist):
 
 if __name__ == '__main__':
   filename = parse_args()
+  print(filename)
   main(filename)
   
 
