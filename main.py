@@ -107,24 +107,24 @@ class RestaurantData:
 
         elements_count = {}
 
-    for element in times_list:
-        if element in elements_count:
-            elements_count[element] += 1
-        else:
-            elements_count[element] = 1
-    for key, value in elements_count.items():
-        print(f"{key}:{value}")
-        
-    time_analysis(elements_count)
+        for element in times_list:
+            if element in elements_count:
+                elements_count[element] += 1
+            else:
+                elements_count[element] = 1
+        for key, value in elements_count.items():
+            print(f"{key}:{value}")
+            
+        time_analysis(elements_count)
     
-  def create_customer_bill(first_list, second_list):
-      bill_list = [(first_list[i], second_list[i]) for i in range(0, len(first_list))]
-      return bill_list
-    
-  def __str__ (bill_list):
-      for bills in bill_list:
-          for order_id in bills:
-              return f"{order_id}"
+    def create_customer_bill(first_list, second_list):
+        bill_list = [(first_list[i], second_list[i]) for i in range(0, len(first_list))]
+        return bill_list
+      
+    def __str__ (bill_list):
+        for bills in bill_list:
+            for order_id in bills:
+                return f"{order_id}"
             
 
 def time_analysis(elements_count):
