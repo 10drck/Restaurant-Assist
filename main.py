@@ -6,8 +6,8 @@ import json
 import random 
 import re
 
-class Customers():
-  """Creates a customer object that can order food. Takes information of customer, what the order is, and time the order is made.
+class Restaurant():
+  """Creates a customer  object that can order food. Takes information of customer, what the order is, and time the order is made.
   
   Attributes: 
     name(str): name of the customer
@@ -30,7 +30,7 @@ class Customers():
         time (int): the hour they ordered in
     
     Side effects: 
-        Creates Customers attribute
+        Creates Restaurant attribute
     """
     
     self.df = data_frame
@@ -123,7 +123,7 @@ class Restaurant():
       menu_items (dict): the items on the menu 
       inventory (dict): the menu items and the amount left that they have 
   """
-   def __init__(self,inventory):
+  def __init__(self,inventory):
     """Create and populates the object for resurants using the location, name, and inventory of said insitution
     Args:
         inventory (dict): this is an inventory of all of the food items that the 
@@ -237,8 +237,8 @@ def main(ordersFile):
   with open(ordersFile, 'r' ) as file:
     df = pd.read_csv(file)
   
-  #call customers class to pass in the csv file
-  Customers(df)
+  #call Restaurant class to pass in the csv file
+  Restaurant(df)
 
   #time_analysis()
   customerinput = input(f"Would you like to see {filename} as a plot? Yes or No")
@@ -274,8 +274,6 @@ if __name__ == '__main__':
   main(filename)
   
 
-
-    
 #any other functs youd like to run during the call.
 
 
