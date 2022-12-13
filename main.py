@@ -183,7 +183,7 @@ def main(ordersFile):
     df = pd.read_csv(file)
   
   #call Restaurant class to pass in the csv file
-  RestaurantData(df) 
+  restaurantdata = RestaurantData(df) 
   
   write_file(RestaurantData.order_total(restaurantdata))
   
