@@ -61,15 +61,16 @@ class RestaurantData():
                 total = total + (quantity * product_price)
             else:
               #how to write to csv file?
-                print(order_id, total)
+                #print(order_ids, order_total)
                 order_ids.append(order_id)
                 order_total.append(total)
-                write_file(order_ids, order_total)
                 order_id = self.df.loc[index, "Order Number"]
                 quantity = self.df.loc[index, "Quantity"]
                 product_price = self.df.loc[index, "Product Price"]
                 total = 0
                 total = total + (quantity * product_price)
+    x = [order_ids, order_total]
+    return x
 
     
   def peak_hours(self):
