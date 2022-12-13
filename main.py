@@ -123,25 +123,6 @@ class RestaurantData():
       for bills in bill_list:
           for order_id in bills:
               return f"{order_id}"
-            
-  """Attributes:
-      menu_items (dict): the items on the menu 
-      inventory (dict): the menu items and the amount left that they have 
-  """
-    def __init__(self,inventory):
-    """Create and populates the object for resurants using the location, name, and inventory of said insitution
-    Args:
-        inventory (dict): this is an inventory of all of the food items that the 
-        restaurant has in stock
-        
-    """ 
-    self.inventory = inventory 
-    #create the inventory     
-    inventory = {(self.menu_item, random.randint(0,50))}
-    
-    #create the list of menu items as an attribute 
-    self.menu_items = pd.read_json("menu.json")
-    self.menu_items = list(self.menu_items.keys())
   
   def check_availability(self, inventory):
     """ uses list comprehension to add dictionary keys to a list in order to determine if an item is out of stock 

@@ -7,7 +7,7 @@ import random
 import re
 
 class Customers():
-  """Creates a customer object that can order food. Takes information of customer, what the order is, and time the order is made.
+  """Creates a customer ogiybject that can order food. Takes information of customer, what the order is, and time the order is made.
   
   Attributes: 
     name(str): name of the customer
