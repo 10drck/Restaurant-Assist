@@ -16,7 +16,6 @@ class RestaurantData():
     payment_type(str): customers payment type
     order(list): what the customer orders
     time(int): the time that the customer ordered
-
   """
   def __init__(self, data_frame):
     """Create and populate the object of customers using name, phone, payment_type,
@@ -62,7 +61,7 @@ class RestaurantData():
                 total = total + (quantity * product_price)
             else:
               #how to write to csv file?
-                #print(order_id, total)
+                print(order_id, total)
                 order_ids.append(order_id)
                 order_total.append(total)
                 write_file(order_ids, order_total)
@@ -72,6 +71,7 @@ class RestaurantData():
                 total = 0
                 total = total + (quantity * product_price)
 
+    
   def peak_hours(self):
     """Summary: calcuates the time of day that orders are most commonly made
     
@@ -109,7 +109,11 @@ class RestaurantData():
     for key, value in elements_count.items():
         print(f"{key}:{value}")
         
-    return elements_count
+    max_value = max(elements_count.values())
+    # print(max_value)
+    # print(elements_count.items(max_value))
+
+    #print(len(times_list))
     
   def create_customer_bill(first_list, second_list):
       bill_list = [(first_list[i], second_list[i]) for i in range(0, len(first_list))]
@@ -119,11 +123,19 @@ class RestaurantData():
       for bills in bill_list:
           for order_id in bills:
               return f"{order_id}"
-  
+            
+
+def time_analysis(elements_count):
+    """ take in elements_count dictionary run min() and max(); return as a variables max_hour and min_hour
+    """
+    #iterate through the dictionary; print the key with the highest value
+    # iterate through the dictionary; print the key with the lowest value
+    max_hour = [time for time, value in elements_count.items() if value == max(elements_count.values())]
+    min_hour = [time for time, value in elements_count.items() if value == min(elements_count.values())]  
+
 def write_file(head_lst, data_lst):
   """Using data from orders done in resturants, with the utilization of the pandas library
    be able to write to a csv to allow for spread sheet view.
-
   args:
     head_lst (lst): list containing the header names
     data_lst (lst): list containing the data
@@ -139,7 +151,6 @@ def write_file(head_lst, data_lst):
 
 def plot_data(data_csv):
   """Using the data that is passed through, plot a cohesive diagram for the owner to indicate trends in their resturant
-
   Args:
     data (list): list containing the data to plot
   """
@@ -159,7 +170,6 @@ def plot_data(data_csv):
 
 def main(ordersFile):
   """intialize objects in this code, call for pandas implimentation for data after the day.
-
   args:
     name(str): the name of either the customer or the employee operating
     access_code(int): the access code of the employee
@@ -185,7 +195,6 @@ def main(ordersFile):
   
 def parse_args(argslist):
   """Parse command line arguments
-
   Args:
       args (string): command line arguments
       
@@ -193,21 +202,9 @@ def parse_args(argslist):
       args: parsed arguments
   """
   parser = ArgumentParser()
-<<<<<<< HEAD
-  parser.add_argument("filepath")
-  parser.add_argument("column")
-
-  args = parser.parse_args(argslist)
-  if args.filepath is None:
-    raise ValueError("Missing filepath")
-  if args.column is None:
-    raise ValueError("Name of Column?")
-  return args
-=======
   parser.add_argument("file", help="file containing food items and stocks")
   
   return parser.parse_args(argslist)
->>>>>>> a93fc1173d9e3736848febdf02462ef10c64891e
 
 if __name__ == '__main__':
   try:
@@ -222,12 +219,10 @@ if __name__ == '__main__':
 
   """
   Files being imported in:
-
     json file with the order, tip, person who ordered
     json file with staff members 
     
   Files being result/what's shown to operator:
     csv file will be written to about some of the data that is coming from the customers to view certain trends in different orders to help the resturant to bring in more reccuring customers and get more revenue.
-
     when presented the option, if the resturant owner would like to view  trends we will be able to present a plot containing some of that data trends found in the particular data through the utilization of the pandas library.
   """
