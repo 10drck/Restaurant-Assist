@@ -120,53 +120,68 @@ class Restaurant():
   """This creates the restaurant class that is the basics of the restaurant
             
   Attributes:
-      location(str): the location of the restaurant
-      name(str): the name of the restaurant
-      inventory(dict): nested dictionaries
+      menu_items (dict): the items on the menu 
+      inventory (dict): the menu items and the amount left that they have 
   """
-  def __init__(self, location, name, inventory):
+   def __init__(self,inventory):
     """Create and populates the object for resurants using the location, name, and inventory of said insitution
-
     Args:
-        location (str): the location of the restaurant, address
-        name (str): the name of the restaurant
         inventory (dict): this is an inventory of all of the food items that the 
         restaurant has in stock
-    """
-    self.location = location
-    self.name = name
-    self.inventory = inventory
-  
-  def check_availability():
-    """Filters the inventory csv against the order list 
-       Args: 
-          inventory (dict): the remaining food in the restaurant 
-          order(dict): the order that was input 
-       Returns: 
-          in_stock (boolean): inside an f-string, returns if the item is out of stock 
-     """
+        
+    """ 
+    self.inventory = inventory 
+    #create the inventory     
     inventory = {(self.menu_item, random.randint(0,50))}
-    order_list = list(orders.keys())
-    final_list = [print(f"{inventory.keys()} is out of stock") 
-    for orders in order_list if inventory.values() == 0]
-    inventory[:][1] = inventory[:][1] - 1; 
+    
+    #create the list of menu items as an attribute 
+    self.menu_items = pd.read_json("menu.json")
+    self.menu_items = list(self.menu_items.keys())
   
-  def profit():
-    """Calculates the profit at the end of an ordering day 
+  def check_availability(self, inventory):
+    """ uses list comprehension to add dictionary keys to a list in order to determine if an item is out of stock 
+       Args: 
+          inventory (dict):value: the remaining food in the restaurant keys: amount of the item (int)
+          order_list (lst): list of input orders 
+       Returns: 
+          updates the inventory dictionary 
+          prints out out of stock items 
+     """
+    
+    #create a list of the ordered items 
+    order_list = list(pd.read_csv('resturant-1-orders.csv', usecols = ["Item Name"]))
+    
+    #update the inventory for each order 
+    [inventory.values()-=1 for orders in order_list if inventory.values() >= 1] 
+    
+    #print out if an order is out of stock
+    for orders in order_list:
+      if inventory.values() == 0:
+        print(f"{inventory.keys()} is out of stock")
+
+  
+  def profit(self):
+    """Calculates the profit at the end of the month, creates a csv file with relevant information 
+    expenses - revenu (printed by the orders_total) 
+
        Args: 
             Orders_total (int): the combined total money from the orders 
-            Staff_wages (int): the combined total wages of the staff for the day 
-            Passive_costs (int): set cost of the restaurant bills (rent, electric, etc) set arbitrability by us 
       Returns: 
-        Daily_profit(int): total profits for the day
+        profit as plain text 
+        monthly_profit(csv df): total profits for the day
     """
-    revenue_df = pd.read_csv('orders_total.csv')
+    #create the two dataframes out of the csv files
+    revenue_df = pd.read_csv('resturant-1-orders.csv', usecols = ["orders_total"])
     cost_df = pd.read_csv("resturant_costs.csv")
-    revenue_df.sum() - cost_df.sum()
-
-    with open('file_I_havent_made_yet', 'w') as profit_csv:
-      writer = csv.writer(profit_csv)
-      writer.writerow("")
+    
+    #calculate the profit 
+    profit = list(revenue_df.sum() - cost_df.sum())
+    
+    # return profit 
+    return profit 
+    #write to a new file (can't write to the main file, it isn't sorted by the order number)
+    write_file()
+    
   
   
 
@@ -234,8 +249,8 @@ def parse_args(argslist):
       args: parsed arguments
   """
   parser = ArgumentParser()
-  parser.add_argument("filepath")
-  parser.add_argument("column")
+  parser.add_argument("filepath", help="file containing food items and stocks")
+  parser.add_argument("column", help="column from the file")
 
   args = parser.parse_args(argslist)
   if args.filepath is None:
