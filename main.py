@@ -170,6 +170,7 @@ def plot_data(data_csv):
 
 def main(ordersFile):
   """intialize objects in this code, call for pandas implimentation for data after the day.
+
   args:
     name(str): the name of either the customer or the employee operating
     access_code(int): the access code of the employee
@@ -183,6 +184,13 @@ def main(ordersFile):
   
   #call Restaurant class to pass in the csv file
   RestaurantData(df) 
+  
+  write_file(RestaurantData.order_total(restaurantdata))
+  
+  time_analysis(RestaurantData.peak_hours())
+  
+  print(RestaurantData.__str__())
+  
 
   #time_analysis()
   customerinput = input(f"Would you like to see {args} as a plot? Yes or No")
