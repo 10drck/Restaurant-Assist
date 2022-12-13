@@ -114,7 +114,7 @@ class RestaurantData:
         for key, value in elements_count.items():
             print(f"{key}:{value}")
             
-        time_analysis(elements_count)
+        return elements_count
     
     def create_customer_bill(first_list, second_list):
         bill_list = [(first_list[i], second_list[i]) for i in range(0, len(first_list))]
