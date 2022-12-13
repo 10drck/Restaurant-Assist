@@ -5,6 +5,7 @@ from argparse import ArgumentParser
 import json
 import random 
 import re
+import sys
 
 class RestaurantData():
   """Creates a customer  object that can order food. Takes information of customer, what the order is, and time the order is made.
@@ -178,6 +179,7 @@ def main(ordersFile):
   """
   #funct will call for functs and classes
   
+  
   #open the given file which is a csv
   with open(ordersFile, 'r' ) as file:
     df = pd.read_csv(file)
@@ -186,10 +188,10 @@ def main(ordersFile):
   RestaurantData(df) 
 
   #time_analysis()
-  customerinput = input(f"Would you like to see {filename} as a plot? Yes or No")
-  if customerinput.lower() == "yes" or "y":
-    plot_data()
-  elif customerinput.lower() == "no" or "n":
+  customerinput = input(f"Would you like to see {args} as a plot? Yes or No")
+  if customerinput.lower() == "yes":
+    plot_data(ordersFile)
+  elif customerinput.lower() == "no":
     pass
   else:
     print("That was an invalid input")
@@ -204,27 +206,24 @@ def parse_args(argslist):
       args: parsed arguments
   """
   parser = ArgumentParser()
-  parser.add_argument("filepath", help="file containing food items and stocks")
-  parser.add_argument("column", help="column from the file")
-
-  args = parser.parse_args(argslist)
-  if args.filepath is None:
-    raise ValueError("Missing filepath")
-  if args.column is None:
-    raise ValueError("Name of Column?")
-  return args
+  parser.add_argument("file", help="file containing food items and stocks")
+  
+  return parser.parse_args(argslist)
 
 if __name__ == '__main__':
-  filename = parse_args()
-  print(filename)
-  main(filename)
-  
+  try:
+    args = parse_args(sys.argv[1:])
+  except ValueError as e:
+    sys.exit(str(e))
+  #print(args.file)
+  main(args.file)
 
 #any other functs youd like to run during the call.
 
 
   """
   Files being imported in:
+
     json file with the order, tip, person who ordered
     json file with staff members 
     
