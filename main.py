@@ -71,7 +71,6 @@ class Customers():
                 total = 0
                 total = total + (quantity * product_price)
 
-    
   def peak_hours(self):
     """Summary: calcuates the time of day that orders are most commonly made
     
