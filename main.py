@@ -199,7 +199,7 @@ def main(ordersFile):
 
     write_file(RestaurantData.order_total(restaurantdata))
 
-    time_analysis(RestaurantData.peak_hours())
+    time_analysis(RestaurantData.peak_hours(restaurantdata))
 
     print(RestaurantData.__str__())
 
