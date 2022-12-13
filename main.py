@@ -153,7 +153,7 @@ def write_file(x):
       'totals': totals
     }
   )
-  df.to_csv('test.csv')
+  df.to_csv('test.csv') #<- allocated file
 
 def plot_data(data_csv):
   """Using the data that is passed through, plot a cohesive diagram for the owner to indicate trends in their resturant
