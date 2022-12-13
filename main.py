@@ -222,7 +222,7 @@ def plot_data(data_csv):
     
 
 
-def main(ordersFile, ):
+def main(ordersFile):
   """intialize objects in this code, call for pandas implimentation for data after the day.
 
   args:
@@ -230,14 +230,25 @@ def main(ordersFile, ):
     access_code(int): the access code of the employee
   """
   #funct will call for functs and classes
+  
+  #time_analysis()
+  
   #open the given file which is a csv
   with open(ordersFile, 'r' ) as file:
     df = pd.read_csv(file)
-    
-  with open(menu, 'r', encoding = 'utf-8') as f:
-        menu = json.load(f)
+  
   #call customers class to pass in the csv file
   Customers(df)
+
+  #time_analysis()
+  customerinput = input(f"Would you like to see {filename} as a plot? Yes or No")
+  if customerinput.lower() == "yes" or "y":
+    fileinput = input("Please input the name of the file")
+    plot_data()
+  elif customerinput.lower() == "no" or "n":
+    pass
+  else:
+    print("That was an invalid input")
   
 def parse_args(argslist):
   """Parse command line arguments
@@ -260,8 +271,12 @@ def parse_args(argslist):
   return args
 
 if __name__ == '__main__':
-  main()
-  parse_args()
+  filename = parse_args()
+  main(filename)
+  
+
+
+    
 #any other functs youd like to run during the call.
 
 
