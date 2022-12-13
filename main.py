@@ -124,7 +124,7 @@ class Restaurant():
           for order_id in bills:
               return f"{order_id}"
             
-  Attributes:
+  """Attributes:
       menu_items (dict): the items on the menu 
       inventory (dict): the menu items and the amount left that they have 
   """
