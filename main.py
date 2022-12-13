@@ -110,11 +110,7 @@ class RestaurantData():
     for key, value in elements_count.items():
         print(f"{key}:{value}")
         
-    max_value = max(elements_count.values())
-    # print(max_value)
-    # print(elements_count.items(max_value))
-
-    #print(len(times_list))
+    time_analysis(elements_count)
     
   def create_customer_bill(first_list, second_list):
       bill_list = [(first_list[i], second_list[i]) for i in range(0, len(first_list))]
