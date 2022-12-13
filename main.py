@@ -3,7 +3,6 @@ import csv
 import matplotlib.pyplot as plt
 from argparse import ArgumentParser
 import json
-import random
 import re
 import sys
 
@@ -141,6 +140,7 @@ def time_analysis(elements_count):
         for time, value in elements_count.items()
         if value == min(elements_count.values())
     ]
+    return f"busiest time: {max_hour} slowest time: {min_hour}"
 
 
 def write_file(x):
