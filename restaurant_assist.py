@@ -128,7 +128,8 @@ class RestaurantData:
             bill_list (list of tuples): the list of bills created above
 
         Returns:
-            order_id : the formal representation of the orders and totals
+            order_id : the formal representation of the order id 
+            order_total: the total of each order
         """
         for bills in bill_list:
             for order_id in bills:
