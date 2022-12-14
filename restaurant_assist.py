@@ -2,21 +2,23 @@ import pandas as pd
 import csv
 import matplotlib.pyplot as plt
 from argparse import ArgumentParser
-import json
 import re
 import sys
 
 
 class RestaurantData:
-    """Takes in the dataframe and analyzes it, byt getting the total for each
-    bill and the orders per horu.
+    """
+    Sarah Peng
+    Takes in the dataframe and analyzes it, byt getting the total for each
+    bill and the orders per hour.
 
     Attributes:
       data_frame (str): the data frame that is passed in by the restaurant
     """
 
     def __init__(self, data_frame):
-        """creates the data_frame to be analyzed
+        """Sarah Peng
+        creates the data_frame to be analyzed
 
         Args:
             data_frame: the dataframe for analysis
@@ -28,7 +30,9 @@ class RestaurantData:
         self.df = data_frame
 
     def order_total(self):
-        """Takes in the customers order and checks if it is available
+        """ Sarah Peng
+        - conditional statements 
+        Takes in the customers order and checks if it is available
         and calculates the total cost of their bill
 
         Args:
@@ -62,7 +66,9 @@ class RestaurantData:
         return orderTotals_list
 
     def peak_hours(self):
-        """Summary: calculates the total orders for each hour
+        """Sarah Peng
+        - regex formula 
+        Summary: calculates the total orders for each hour
 
         Args:
             data_frame(str): has the hour of the orders and each order
