@@ -102,8 +102,6 @@ class RestaurantData:
                 elements_count[element] += 1
             else:
                 elements_count[element] = 1
-        for key, value in elements_count.items():
-            print(f"{key}:{value}")
             
         return elements_count
     
