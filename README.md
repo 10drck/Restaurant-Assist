@@ -75,3 +75,10 @@ For the temporary data we used [Kaggle](https://www.kaggle.com/datasets/henslers
 | Sarah Peng (speng10) |- order_total() <br> - peak_hours()   | - RegEx <br> - Conditional statements  |
 |Sophia Hrabinski  (sophrabin) |- time_analysis() <br> - \__str__()   | - Comprehension <br> - Magic method   |
 |Lorenzo Regala (enzoregala)  |- main() <br> - parse_args()   | - Fstrings <br> - Parse args |  
+### File Purposes
+ 1. __restaurant_assist.py__ - File where our main code is stored.
+ 2. __mock_restaurant_data.csv__ - CSV file that contains mock data that will be provided from a restaurant when using the program.
+ 3. __order_totals.csv__ - A CSV file that is being written to from the program. The written data will be the totals of different orders from the provided data.
+ 4. __data.png__(optional) - A PNG image that repersents a bar plot of the top 7 dishes pulled from the provided data (created from file).
+ 5. __README.md__ - Documentation on how to utilize the program.
+ 

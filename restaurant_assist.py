@@ -206,9 +206,9 @@ def main(ordersFile):
 
     write_file(RestaurantData.order_total(restaurantdata))
 
-    time_analysis(RestaurantData.peak_hours(restaurantdata))
+    print(time_analysis(RestaurantData.peak_hours(restaurantdata)))
 
-    #print(RestaurantData.__str__(RestaurantData.order_total(restaurantdata)))
+    print(RestaurantData.__str__(RestaurantData.order_total(restaurantdata)))
     customerinput = input(f"Would you like to see {args} as a plot? Yes or No: ")
     if customerinput.lower() == "yes":
         plot_data(ordersFile)
