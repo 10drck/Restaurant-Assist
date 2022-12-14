@@ -159,7 +159,6 @@ def write_file(list_of_idtotals):
     args:
       list_of_idtotals (list): a list containing two different lists. One list being order ids and the other being the combined totals for each id.
     """
-    # replace with pandas code
     ids = list_of_idtotals[0]
     totals = list_of_idtotals[1]
 
@@ -190,13 +189,11 @@ def plot_data(data_csv):
 
 
 def main(ordersFile):
-    """intialize objects in this code, call for pandas implimentation for data after the day.
+    """intialize objects in this code, and calls for the different functions in the code.
 
     args:
-      name(str): the name of either the customer or the employee operating
-      access_code(int): the access code of the employee
+      ordersFile(str): path of file.
     """
-    # funct will call for functs and classes
     # open the given file which is a csv
     with open(ordersFile, "r") as file:
         df = pd.read_csv(file)
@@ -221,7 +218,7 @@ def main(ordersFile):
 def parse_args(argslist):
     """Parse command line arguments
     Args:
-        args (string): command line arguments
+        argslist (list): command line arguments
 
     Returns:
         args: parsed arguments
