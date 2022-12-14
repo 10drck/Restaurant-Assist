@@ -156,8 +156,7 @@ def time_analysis(elements_count):
     return f"busiest time: {max_hour} slowest time: {min_hour}"
 
 def write_file(list_of_idtotals):
-    """Using data from orders done in restaurant, with the utilization of the pandas library
-     be able to write to a csv to allow for spread sheet view of order totals.
+    """Be able to write to a csv to allow for spread sheet view of order totals.
 
     args:
       list_of_idtotals (list): a list containing two different lists. One list being order ids and the other being the combined totals for each id.
@@ -189,7 +188,7 @@ def plot_data(data_csv):
     )  # grouping to view quantities
     plt.bar(x=df["Item Name"].head(7), height=df["Quantity"].head(7))
     plt.savefig("data.png")  # saves to directory as 'data.png'
-    print("Done with the graph!")
+    print("Done with the graph, view it in 'data.png!'")
 
 
 def main(ordersFile):
@@ -211,10 +210,8 @@ def main(ordersFile):
 
     time_analysis(RestaurantData.peak_hours(restaurantdata))
 
-    print(RestaurantData.__str__(RestaurantData.order_total(restaurantdata)))
-
-    # time_analysis()
-    customerinput = input(f"Would you like to see {args} as a plot? Yes or No")
+    #print(RestaurantData.__str__(RestaurantData.order_total(restaurantdata)))
+    customerinput = input(f"Would you like to see {args} as a plot? Yes or No: ")
     if customerinput.lower() == "yes":
         plot_data(ordersFile)
     elif customerinput.lower() == "no":
