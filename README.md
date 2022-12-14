@@ -52,7 +52,7 @@ Files that may(or may not) be effected:
  - data.png
  <br>
 
-If you would like to see the plot of your file. `data.png` will contain a bar plot of the top 7 dishes at your restaurant using the data provided by the .csv file.
+If you would like to see the plot of your file. `data.png` will contain a bar plot of the top 7 dishes at your restaurant using the data provided by the .csv file. If you would like to see the totals of each order access ` order_totals.csv `.
 
  
 
