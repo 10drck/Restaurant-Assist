@@ -151,7 +151,7 @@ def time_analysis(elements_count):
         for time, value in elements_count.items()
         if value == min(elements_count.values())
     ]
-    return f"busiest time(s): {max_hour} slowest time(s): {min_hour}"
+    return f"Busiest Time(s): {max_hour} Slowest Time(s): {min_hour}"
 
 def write_file(list_of_idtotals):
     """Be able to write to a csv to allow for spread sheet view of order totals.
