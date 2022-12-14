@@ -61,8 +61,8 @@ class RestaurantData:
                     product_price = self.df.loc[index, "Product Price"]
                     total = 0
                     total = total + (quantity * product_price)
-        x = [order_ids, order_total]
-        return x
+        orderTotals_list = [order_ids, order_total]
+        return orderTotals_list
 
     def peak_hours(self):
         """Summary: calculates the total orders for each hour
