@@ -117,17 +117,39 @@ class RestaurantData:
         return elements_count
     
     def create_customer_bill(first_list, second_list):
+        """creates a list of tuples with the orders and prices 
+
+        Args:
+            first_list (list): a list of all the orders
+            second_list (list): list of all the prices 
+
+        Returns:
+            bill_list (list of tuples): a list of the orders and the price
+        """
         bill_list = [(first_list[i], second_list[i]) for i in range(0, len(first_list))]
         return bill_list
       
     def __str__ (bill_list):
+        """returns the orders and totals
+
+        Args:
+            bill_list (list of tuples): the list of bills created above
+
+        Returns:
+            order_id : the formal representation of the orders and totals
+        """
         for bills in bill_list:
             for order_id in bills:
                 return f"{order_id}"
             
 
 def time_analysis(elements_count):
-    """take in elements_count dictionary run min() and max(); return as a variables max_hour and min_hour"""
+    """take in elements_count dictionary run min() and max();
+    Args: 
+        elements_count (dict): the number of orders per hour 
+    returns: 
+        max_hour (list): list of the busiest hour
+        min_hour (list): list of the slowest hour """
     # iterate through the dictionary; print the key with the highest value
     # iterate through the dictionary; print the key with the lowest value
     max_hour = [
@@ -141,7 +163,6 @@ def time_analysis(elements_count):
         if value == min(elements_count.values())
     ]
     return f"busiest time: {max_hour} slowest time: {min_hour}"
-
 
 def write_file(x):
     """Using data from orders done in resturants, with the utilization of the pandas library
