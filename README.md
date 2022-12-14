@@ -43,7 +43,7 @@ On **Windows 8+**:
 
 ### Demostration
 -----
-For demonstration purposes, please use file ` restaurant-1 orders.csv ` when running the program.
+For demonstration purposes, please subsitute filename with ` mock_resaurant_data.csv ` when running the program.
 
 ## Output
 
