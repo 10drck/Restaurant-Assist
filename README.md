@@ -1,6 +1,6 @@
 # Restaurant_Assist
 ## Table of Contents
-------------------
+
 + [About](#about)
 + [Installing](#installing)
 + [Output](#output)
@@ -8,7 +8,6 @@
 + [Rubric](#rubric)
 
 ## About <a name = "about"></a>
--------------------
 Geared towards restaurants that wanted a program to showcase their selling points to current/potential stakeholders in their restaurant. Utilizing python makes this process seamless for restaurant owners to use and easily repersent varried statistics.
 
 
@@ -25,14 +24,13 @@ Downlad libraries by typing in the following (or provided documentation from lib
 ``` python3
 pip install pandas matplotlib
 ```
-_______
 
 Clone the repository to your system:
 
 ``` python
 $ git clone https://github.com/10drck/inst326_finalproj.git
 ```
-________
+
 To use the program, in the directory use the following command:
 
 ``` python
@@ -42,13 +40,13 @@ On **Windows 8+**:
 ``` python
 > python restaurant_assist.py filename
 ```
-______
+
 ### Demostration
+-----
 For demonstration purposes, please use file ` restaurant-1 orders.csv ` when running the program.
 
-----------------------------------
 ## Output
---------------
+
 Files that may(or may not) be effected:
  - order_totals.csv
  - data.png
@@ -60,7 +58,7 @@ If you would like to see the plot of your file. `data.png` will contain a bar pl
 
 
 ## Usage <a name = "usage"></a>
------------------
+
 
 For the temporary data we used [Kaggle](https://www.kaggle.com/datasets/henslersoftware/19560-indian-takeaway-orders) to imitate data from a restaurant.
 
