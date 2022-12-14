@@ -132,7 +132,7 @@ class RestaurantData:
         """
         for bills in bill_list:
             for order_id in bills:
-                return f"{order_id}"
+                return f"{order_id} + {order_total}"
 
 
 def time_analysis(elements_count):
