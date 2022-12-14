@@ -37,7 +37,6 @@ class RestaurantData:
         Returns: the total cost of each bill
         """
         order_id = self.df.loc[0, "Order Number"]
-        # print("orderid", order_id)
         order_ids = []
         order_total = []
         for index in range(len(self.df)):
@@ -52,8 +51,6 @@ class RestaurantData:
                     product_price = self.df.loc[index, "Product Price"]
                     total = total + (quantity * product_price)
                 else:
-                    # how to write to csv file?
-                    # print(order_ids, order_total)
                     order_ids.append(order_id)
                     order_total.append(total)
                     order_id = self.df.loc[index, "Order Number"]
