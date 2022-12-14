@@ -8,30 +8,21 @@ import sys
 
 
 class RestaurantData:
-    """Creates a customer  object that can order food. Takes information of customer, what the order is, and time the order is made.
+    """Takes in the dataframe and analyzes it, byt getting the total for each 
+    bill and the orders per horu. 
 
     Attributes:
-      name(str): name of the customer
-      phone(str): customers phone number
-      payment_type(str): customers payment type
-      order(list): what the customer orders
-      time(int): the time that the customer ordered
+      data_frame (str): the data frame that is passed in by the restaurant
     """
 
     def __init__(self, data_frame):
-        """Create and populate the object of customers using name, phone, payment_type,
-        order, order_num, and time that will be passed through when intialized
+        """creates the data_frame to be analyzed
 
         Args:
-            name (str): name of the customer
-            phone (str): phone number of the customer
-            payment (str): how they will pay
-            order (list): the customers order default to an empty list []
-            order_num (int): the order number
-            time (int): the hour they ordered in
+            data_frame: the dataframe for analysis
 
         Side effects:
-            Creates Restaurant attribute
+            Creates RestaurantData attribute
         """
 
         self.df = data_frame
@@ -41,9 +32,9 @@ class RestaurantData:
         and calculates the total cost of their bill
 
         Args:
-            order(lst): the order of the customer
+            dataframe (str): the orders and costs of the products
 
-        Returns: the total cost of their bill
+        Returns: the total cost of each bill
         """
         order_id = self.df.loc[0, "Order Number"]
         # print("orderid", order_id)
@@ -74,13 +65,13 @@ class RestaurantData:
         return x
 
     def peak_hours(self):
-        """Summary: calcuates the time of day that orders are most commonly made
+        """Summary: calculates the total orders for each hour
 
         Args:
-            time(int): the hour that the order is made in
+            data_frame(str): has the hour of the orders and each order
 
         Returns:
-          the most orders in the hour
+          a dictionary with the hours and the number of orders
         """
 
         times_list = []
