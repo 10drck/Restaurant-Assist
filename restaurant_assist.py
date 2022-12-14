@@ -8,8 +8,8 @@ import sys
 
 
 class RestaurantData:
-    """Takes in the dataframe and analyzes it, byt getting the total for each 
-    bill and the orders per horu. 
+    """Takes in the dataframe and analyzes it, byt getting the total for each
+    bill and the orders per horu.
 
     Attributes:
       data_frame (str): the data frame that is passed in by the restaurant
@@ -102,23 +102,23 @@ class RestaurantData:
                 elements_count[element] += 1
             else:
                 elements_count[element] = 1
-            
+
         return elements_count
-    
+
     def create_customer_bill(first_list, second_list):
-        """creates a list of tuples with the orders and prices 
+        """creates a list of tuples with the orders and prices
 
         Args:
             first_list (list): a list of all the orders
-            second_list (list): list of all the prices 
+            second_list (list): list of all the prices
 
         Returns:
             bill_list (list of tuples): a list of the orders and the price
         """
         bill_list = [(first_list[i], second_list[i]) for i in range(0, len(first_list))]
         return bill_list
-      
-    def __str__ (bill_list):
+
+    def __str__(bill_list):
         """returns the orders and totals
 
         Args:
@@ -130,15 +130,15 @@ class RestaurantData:
         for bills in bill_list:
             for order_id in bills:
                 return f"{order_id}"
-            
+
 
 def time_analysis(elements_count):
     """take in elements_count dictionary run min() and max();
-    Args: 
-        elements_count (dict): the number of orders per hour 
-    returns: 
+    Args:
+        elements_count (dict): the number of orders per hour
+    returns:
         max_hour (list): list of the busiest hour
-        min_hour (list): list of the slowest hour """
+        min_hour (list): list of the slowest hour"""
     # iterate through the dictionary; print the key with the highest value
     # iterate through the dictionary; print the key with the lowest value
     max_hour = [
@@ -152,6 +152,7 @@ def time_analysis(elements_count):
         if value == min(elements_count.values())
     ]
     return f"Busiest Time(s): {max_hour} Slowest Time(s): {min_hour}"
+
 
 def write_file(list_of_idtotals):
     """Be able to write to a csv to allow for spread sheet view of order totals.
