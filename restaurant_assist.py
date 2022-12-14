@@ -178,7 +178,7 @@ def write_file(x):
     totals = x[1]
 
     df = pd.DataFrame({"ids": ids, "totals": totals})
-    df.to_csv("test.csv")  # <- allocated file
+    df.to_csv("order_totals.csv")  # <- allocated file
 
 
 def plot_data(data_csv):
