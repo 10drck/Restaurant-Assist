@@ -155,23 +155,23 @@ def time_analysis(elements_count):
     ]
     return f"busiest time: {max_hour} slowest time: {min_hour}"
 
-def write_file(x):
-    """Using data from orders done in resturants, with the utilization of the pandas library
-     be able to write to a csv to allow for spread sheet view.
+def write_file(list_of_idtotals):
+    """Using data from orders done in restaurant, with the utilization of the pandas library
+     be able to write to a csv to allow for spread sheet view of order totals.
 
     args:
-      x ()
+      list_of_idtotals (list): a list containing two different lists. One list being order ids and the other being the combined totals for each id.
     """
     # replace with pandas code
-    ids = x[0]
-    totals = x[1]
+    ids = list_of_idtotals[0]
+    totals = list_of_idtotals[1]
 
     df = pd.DataFrame({"ids": ids, "totals": totals})
     df.to_csv("order_totals.csv")  # <- allocated file
 
 
 def plot_data(data_csv):
-    """Using the data that is passed through, plot a cohesive diagram for the owner to indicate trends in their resturant
+    """Using the data that is passed through, plot a cohesive diagram for the owner to indicate trends in their restaurant.
     Args:
       data_csv (csv file): .csv file that is provided from the restaurant of accumulated orders from x amount of time
     """
@@ -242,17 +242,4 @@ if __name__ == "__main__":
         args = parse_args(sys.argv[1:])
     except ValueError as e:
         sys.exit(str(e))
-    # print(args.file)
     main(args.file)
-
-    # any other functs youd like to run during the call.
-
-    """
-  Files being imported in:
-    json file with the order, tip, person who ordered
-    json file with staff members 
-    
-  Files being result/what's shown to operator:
-    csv file will be written to about some of the data that is coming from the customers to view certain trends in different orders to help the resturant to bring in more reccuring customers and get more revenue.
-    when presented the option, if the resturant owner would like to view  trends we will be able to present a plot containing some of that data trends found in the particular data through the utilization of the pandas library.
-  """
