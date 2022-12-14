@@ -160,9 +160,7 @@ def write_file(x):
      be able to write to a csv to allow for spread sheet view.
 
     args:
-      head_lst (lst): list containing the header names
-      data_lst (lst): list containing the data
-      can also be a dict
+      x ()
     """
     # replace with pandas code
     ids = x[0]
@@ -175,7 +173,7 @@ def write_file(x):
 def plot_data(data_csv):
     """Using the data that is passed through, plot a cohesive diagram for the owner to indicate trends in their resturant
     Args:
-      data (list): list containing the data to plot
+      data_csv (csv file): .csv file that is provided from the restaurant of accumulated orders from x amount of time
     """
     plt.figure(figsize=(10, 10), dpi=100)  # figure size for plotting
 
