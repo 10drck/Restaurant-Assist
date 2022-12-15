@@ -133,7 +133,7 @@ class RestaurantData:
         """
         for bills in bill_list:
             for order_id in bills:
-                return f"{order_id} + {order_total}"
+                return f"{order_id}"
 
 
 def time_analysis(elements_count):
@@ -159,7 +159,7 @@ def time_analysis(elements_count):
 
 
 def write_file(list_of_idtotals):
-    """Be able to write to a csv to allow for spread sheet view of order totals.
+    """Be able to write to a csv to allow for spread sheet view of order totals. Kendrick M
 
     args:
       list_of_idtotals (list): a list containing two different lists. One list being order ids and the other being the combined totals for each id.
@@ -172,7 +172,7 @@ def write_file(list_of_idtotals):
 
 
 def plot_data(data_csv):
-    """Using the data that is passed through, plot a cohesive diagram for the owner to indicate trends in their restaurant.
+    """Using the data that is passed through, plot a cohesive diagram for the owner to indicate trends in their restaurant. Kendrick M
     Args:
       data_csv (csv file): .csv file that is provided from the restaurant of accumulated orders from x amount of time
     """
