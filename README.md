@@ -21,23 +21,23 @@ Geared towards restaurants that wanted a program to showcase their selling point
 1. [matplotlib](https://matplotlib.org/)
 
 Downlad libraries by typing in the following (or provided documentation from libraries):
-``` python3
-pip install pandas matplotlib
+```
+$ pip install pandas matplotlib
 ```
 
 Clone the repository to your system:
 
-``` python
-$ git clone https://github.com/10drck/inst326_finalproj.git
+```
+$ git clone https://github.com/10drck/Restaurant-Assist.git
 ```
 
 To use the program, in the directory use the following command:
 
-``` python
+```
 $ python3 restaurant_assist.py filename
 ```
 On **Windows 8+**:
-``` python
+```
 > python restaurant_assist.py filename
 ```
 
