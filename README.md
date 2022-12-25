@@ -1,4 +1,4 @@
-# Restaurant_Assist
+# Restaurant-Assist
 ## Table of Contents
 
 + [About](#about)
